@@ -1,22 +1,26 @@
 import requests
+import json
 
-url = "https://weatherapi-com.p.rapidapi.com/future.json"
+#Author: Sossio Giorgelli, version 1
 
-querystring = {
-    "q":"London",
-    "dt":"2022-12-25"
-}
+def get_cityWeather(countryName, dayLimit): #dayLimit shall be 4
+    url = "https://weatherapi-com.p.rapidapi.com/future.json"
 
-headers = {
-	"X-RapidAPI-Key": "0ab490636dmsh7da5c2757e98131p159b59jsn6b2e12133ae3",
-	"X-RapidAPI-Host": "weatherapi-com.p.rapidapi.com"
-}
+    querystring = {
+        q: countryName,
+        days: dayLimit
+    }
+    
+    headers = {
+        "X-RapidAPI-Key": "0ab490636dmsh7da5c2757e98131p159b59jsn6b2e12133ae3",
+        "X-RapidAPI-Host": "weatherapi-com.p.rapidapi.com"
+    }
 
-response = requests.request(
-    "GET", 
-    url, 
-    headers=headers, 
-    params=querystring
-)
+    response = requests.request(
+        "GET", 
+        url, 
+        headers=headers, 
+        params=querystring
+    )
 
-print(response.text)
+    print(response.text)

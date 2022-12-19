@@ -10,7 +10,6 @@ def get_wikidataID(cityName):
     
     # will return "Q25796287" as the value of the "wikibase_item" key.
 
-
     response = requests.request("GET", url)
     response_data = response.json()
     

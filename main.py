@@ -4,6 +4,8 @@ from flask import render_template
 
 from APIer.geodb import get_cityDetails
 
+from APIer.weather import get_cityWeather
+
 # python -m venv myenv --för att skapa en ny virtuell miljö
 # $env:FLASK_APP = "main.py"  --berätta för flask var applikation finnns
 # flask run --kör servern
@@ -11,7 +13,8 @@ from APIer.geodb import get_cityDetails
 app = Flask(__name__)
  # setup(): Nödvändiga saker som ska göras när servern startar.
 
-hej = get_cityDetails("Malmö")
+cityDetails = get_cityDetails("Malmö")
+cityWeather = get_cityWeather("Lund", 4)
 # Definera ändpunkter för de olika API metoderna.
 #@app.route("/<input>", methods=['GET']) #Lista alla enhörningar
 #def list_cities(input): 
@@ -20,13 +23,11 @@ hej = get_cityDetails("Malmö")
 #Tillfällig frontpage route.
 @app.route("/<Cityname>", methods=['GET'])
 def frontpage():
-        return(render_template("index.html"))
-
+    return(render_template("index.html"))
 
 @app.route("/")
 def index():
-    return render_template('index.html') # You have to save the html files
-                                         # inside of a 'templates' folder.
+    return render_template('index.html') # You have to save the html files inside of a 'templates' folder.
 
 @app.route("/")
 def style():
@@ -34,6 +35,6 @@ def style():
 
 @app.route("/")
 def script():
-    return render_template('script.js')
+    return render_template('weather.js')
 
 #app.run(debug=True)
