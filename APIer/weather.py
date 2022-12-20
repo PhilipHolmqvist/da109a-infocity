@@ -8,7 +8,7 @@ def get_cityWeather(countryName): #dayLimit shall be 4
 
     querystring = {
         "q": countryName,
-        "days": 4
+        "days": 3
     }
 
     headers = {
@@ -30,20 +30,25 @@ def get_cityWeather(countryName): #dayLimit shall be 4
     #for s in response_data['forecast']['forecastday'].keys():
     #   print(("Min temp: " + response_data['day']['mintemp_c'] + " C, Max temp: " + response_data['day']['maxtemp_c'] + " C"))
     
-    
     print(response_data['forecast']['forecastday'][0]['date'])
     print("Temp: " + str(response_data['forecast']['forecastday'][0]['day']['avgtemp_c']) + " C")
     print("Temp: " + str(response_data['forecast']['forecastday'][0]['day']['maxwind_kph']) + " kph")
     print("Temp: " + str(response_data['forecast']['forecastday'][0]['day']['daily_chance_of_rain']) + " %")
     print("Temp: " + str(response_data['forecast']['forecastday'][0]['day']['condition']['icon']))
 
+    print(response_data['forecast']['forecastday'][1]['date'])
+    print("Temp: " + str(response_data['forecast']['forecastday'][1]['day']['avgtemp_c']) + " C")
+    print("Temp: " + str(response_data['forecast']['forecastday'][1]['day']['maxwind_kph']) + " kph")
+    print("Temp: " + str(response_data['forecast']['forecastday'][1]['day']['daily_chance_of_rain']) + " %")
+    print("Temp: " + str(response_data['forecast']['forecastday'][1]['day']['condition']['icon']))
 
+    print(response_data['forecast']['forecastday'][2]['date'])
+    print("Temp: " + str(response_data['forecast']['forecastday'][2]['day']['avgtemp_c']) + " C")
+    print("Temp: " + str(response_data['forecast']['forecastday'][2]['day']['maxwind_kph']) + " kph")
+    print("Temp: " + str(response_data['forecast']['forecastday'][2]['day']['daily_chance_of_rain']) + " %")
+    print("Temp: " + str(response_data['forecast']['forecastday'][2]['day']['condition']['icon']))
 
-
-
-
-
-
+    #Old
     #print(response_data['forecast']['forecastday'][1]['date'])
     #print("Min temp: " + str(response_data['forecast']['forecastday'][1]['day']['mintemp_c']) + " C, Max temp: " + str(response_data['forecast']['forecastday'][1]['day']['maxtemp_c']) + " C")
 
