@@ -1,7 +1,7 @@
 import requests
 import json
 
-def apicall(currencyfrom, currencyto, amount):
+def get_rate(currencyfrom, currencyto, amount):
     url = "https://currency-converter5.p.rapidapi.com/currency/convert"
     queryString = {"format":"json", "from":currencyfrom, "to": currencyto, "amount":amount}
     headers = {
@@ -11,13 +11,13 @@ def apicall(currencyfrom, currencyto, amount):
     response = requests.request("GET", url, headers = headers, params=queryString)
     data = json.loads(response.text)
     print("From: " + data['base_currency_name'])
-    print("Amount: " + data['amount'])
+    print("Amount: " + data['amount'] + " " + currencyfrom)
     print("To: " + data['rates'][currencyto]['currency_name'])
-    print("Amount: " + data['rates'][currencyto]['rate_for_amount'])
-    print("Current rate: " + data['rates'][currencyto]['rate'])
+    print("Amount: " + data['rates'][currencyto]['rate_for_amount'] + " " + currencyto)
+    print("Current rate: " + data['rates'][currencyto]['rate'] + " " + currencyto + " / 1 " + currencyfrom)
     
 currencyFrom = "EUR"
 currencyTo = "USD"
-amount = "100"
+amount = "0"
 
-apicall(currencyFrom, currencyTo, amount)
+get_rate(currencyFrom, currencyTo, amount)
