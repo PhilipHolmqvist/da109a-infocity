@@ -8,10 +8,41 @@
 
 .name{
     text-decoration: none;
-    padding-right: 10px;
+    padding-left: 8px;
 }
 
 a {
     text-decoration: line-through;
-    font-size: 20px;
+    font-size: 25px;
+    float: left;
+}
+
+.name a {
+    text-decoration: none;
+    color: white;
+    padding-left: 5px;
+}
+
+.name a:hover{
+    color: white;
+}
+
+#search-bar {
+    padding-left: 600px;
+    padding-top: 4px;
+    float: right;
+    text-align: center;
+}
+
+#input {
+    border-top-left-radius: 20px ;
+    border-bottom-left-radius: 20px;
+}
+
+#search {
+    padding-left: 0px;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
 }
