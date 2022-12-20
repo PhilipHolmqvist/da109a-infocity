@@ -14,16 +14,6 @@ for (let i = 0; i < dropList.length; i++) {
     }
 }
 
-
-window.addEventListener("load", ()=>{
-    //getExchangeRate();
-});
-
-getButton.addEventListener("click", e =>{
-    e.preventDefault(); //preventing form from submitting
-    //getExchangeRate();
-});
-
 const exchangeIcon = document.querySelector("form .icon");
 exchangeIcon.addEventListener("click", ()=>{
     let tempCode = fromCurrency.value; // temporary currency code of FROM drop list
