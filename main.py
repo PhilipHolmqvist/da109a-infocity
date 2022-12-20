@@ -3,7 +3,8 @@ from flask import Flask, request
 from flask import render_template
 
 from APIer.geodb import get_cityDetails
-
+from APIer.geodb import get_cityTime
+from APIer.geodb import get_countryDetails
 from APIer.weather import get_cityWeather
 
 # python -m venv myenv --för att skapa en ny virtuell miljö
@@ -13,8 +14,8 @@ from APIer.weather import get_cityWeather
 app = Flask(__name__)
  # setup(): Nödvändiga saker som ska göras när servern startar.
 
-cityDetails = get_cityDetails("Malmö")
-cityWeather = get_cityWeather("Lund", 4)
+cityDetails = get_cityWeather("Malmö", 4)
+
 # Definera ändpunkter för de olika API metoderna.
 #@app.route("/<input>", methods=['GET']) #Lista alla enhörningar
 #def list_cities(input): 

@@ -7,8 +7,8 @@ def get_cityWeather(countryName, dayLimit): #dayLimit shall be 4
     url = "https://weatherapi-com.p.rapidapi.com/future.json"
 
     querystring = {
-        q: countryName,
-        days: dayLimit
+        "q": countryName,
+        "days": dayLimit
     }
     
     headers = {
