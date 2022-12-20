@@ -3,12 +3,12 @@ import json
 
 #Author: Sossio Giorgelli, version 1
 
-def get_cityWeather(countryName, dayLimit): #dayLimit shall be 4
+def get_cityWeather(countryName): #dayLimit shall be 4
     url = "https://weatherapi-com.p.rapidapi.com/forecast.json"
 
     querystring = {
         "q": countryName,
-        "days": dayLimit
+        "days": 4
     }
 
     headers = {
@@ -32,10 +32,20 @@ def get_cityWeather(countryName, dayLimit): #dayLimit shall be 4
     
     
     print(response_data['forecast']['forecastday'][0]['date'])
-    print("Min temp: " + str(response_data['forecast']['forecastday'][0]['day']['mintemp_c']) + " C, Max temp: " + str(response_data['forecast']['forecastday'][0]['day']['maxtemp_c']) + " C")
+    print("Temp: " + str(response_data['forecast']['forecastday'][0]['day']['avgtemp_c']) + " C")
+    print("Temp: " + str(response_data['forecast']['forecastday'][0]['day']['maxwind_kph']) + " kph")
+    print("Temp: " + str(response_data['forecast']['forecastday'][0]['day']['daily_chance_of_rain']) + " %")
+    print("Temp: " + str(response_data['forecast']['forecastday'][0]['day']['condition']['icon']))
 
-    print(response_data['forecast']['forecastday'][1]['date'])
-    print("Min temp: " + str(response_data['forecast']['forecastday'][1]['day']['mintemp_c']) + " C, Max temp: " + str(response_data['forecast']['forecastday'][1]['day']['maxtemp_c']) + " C")
 
-    print(response_data['forecast']['forecastday'][2]['date'])
-    print("Min temp: " + str(response_data['forecast']['forecastday'][2]['day']['mintemp_c']) + " C, Max temp: " + str(response_data['forecast']['forecastday'][2]['day']['maxtemp_c']) + " C")
+
+
+
+
+
+
+    #print(response_data['forecast']['forecastday'][1]['date'])
+    #print("Min temp: " + str(response_data['forecast']['forecastday'][1]['day']['mintemp_c']) + " C, Max temp: " + str(response_data['forecast']['forecastday'][1]['day']['maxtemp_c']) + " C")
+
+    #print(response_data['forecast']['forecastday'][2]['date'])
+    #print("Min temp: " + str(response_data['forecast']['forecastday'][2]['day']['mintemp_c']) + " C, Max temp: " + str(response_data['forecast']['forecastday'][2]['day']['maxtemp_c']) + " C")
