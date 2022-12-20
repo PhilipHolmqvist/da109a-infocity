@@ -1,56 +1,43 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <meta charset="UTF-8">
-    <title>Infocity</title>
+    <head>
+        <meta charset="UTF-8">
+        <title>Infocity</title>
 
-    <link rel="stylesheet" href="../static/style.css">
+        <link rel="stylesheet" href="../static/style.css">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 
-    <script type="text/javascript" src="../static/weather.js"></script>
+        <script type="text/javascript" src="../static/weather.js"></script>
 
-</head>
+    </head>
 
-<body>
+    <body>
+        <div class="grid">
+            <header>
+                <h1>Infocity</h1>
+            </header>
 
-    <section class="weatherSection">
-
-        <h1>City Weather</h1>
-
-        <div class="searchBar">
-            <input type="text" id="input" name="TextBox">
-            <button type="button" id="search"><a href="/search">Search</a></button>
+            <section>
+                <div id="hej">
+                    <div id="search">
+                        <input id="search-bar" type="search-bar" placeholder="Search for a country/region/city">
+                    </div>
+                    <div id="button"> 
+                        <input id="button" type="submit">
+                    </div>
+                    <div id="info">
+                        <h1>Info om sidan</h1>
+                        <p>
+                            text
+                        </p>
+                    </div>
+                </div>
+            </section>
         </div>
-
-
-        <div class="name">
-            <p id="cityAndCountry">City, Country</p>
-        </div>
-
-        <div class="forecast">
-            <div class="day">
-                <p id="day1">Day 1</p>
-                <p id="temp1"> Min, max</p>
-            </div>
-
-            <div class="day">
-                <p id="day2">Day 2</p>
-                <p id="temp2">Min, max</p>
-            </div>
-
-            <div class="day">
-                <p id="day3">Day 3</p>
-                <p id="temp3">Min, max</p>
-            </div>
-        </div>
-
-    </section>
-
-
-</body>
+    </body>
 
 </html>
