@@ -1,14 +1,23 @@
+# *****************************************
+# Author: Sossio Giorgelli, version 1
+# *****************************************
+
+# This file fetches information from weatherapi-com for specific city.
+
+# Import required recources. 
 import requests
 import json
 
-#Author: Sossio Giorgelli, version 1
-
-def get_cityWeather(countryName): #dayLimit shall be 4
+# Method to return city weather.
+def get_cityWeather(countryName):
     url = "https://weatherapi-com.p.rapidapi.com/forecast.json"
 
     querystring = {
-        "q": countryName,
-        "days": 3
+        # Required Query parameter of city name, string.
+        "q": countryName, 
+
+        # Optional Query parameter to show day limit (max 3 allowed for this subscription).
+        "days": 3         
     }
 
     headers = {
@@ -23,34 +32,24 @@ def get_cityWeather(countryName): #dayLimit shall be 4
         params=querystring
     )
     
-    response_data = response.json()
+    # Return response as a json format.
+    response_data = response.json()  
 
+    # City name, city country.
     print(response_data['location']['name'] + ", " + response_data['location']['country'])
-
-    #for s in response_data['forecast']['forecastday'].keys():
-    #   print(("Min temp: " + response_data['day']['mintemp_c'] + " C, Max temp: " + response_data['day']['maxtemp_c'] + " C"))
     
-    print(response_data['forecast']['forecastday'][0]['date'])
-    print("Temp: " + str(response_data['forecast']['forecastday'][0]['day']['avgtemp_c']) + " C")
-    print("Temp: " + str(response_data['forecast']['forecastday'][0]['day']['maxwind_kph']) + " kph")
-    print("Temp: " + str(response_data['forecast']['forecastday'][0]['day']['daily_chance_of_rain']) + " %")
-    print("Temp: " + str(response_data['forecast']['forecastday'][0]['day']['condition']['icon']))
+    for x in range(3):
+        # City date of day 1
+        print(response_data['forecast']['forecastday'][x]['date'])
 
-    print(response_data['forecast']['forecastday'][1]['date'])
-    print("Temp: " + str(response_data['forecast']['forecastday'][1]['day']['avgtemp_c']) + " C")
-    print("Temp: " + str(response_data['forecast']['forecastday'][1]['day']['maxwind_kph']) + " kph")
-    print("Temp: " + str(response_data['forecast']['forecastday'][1]['day']['daily_chance_of_rain']) + " %")
-    print("Temp: " + str(response_data['forecast']['forecastday'][1]['day']['condition']['icon']))
+        # City temperature.
+        print("Temp: " + str(response_data['forecast']['forecastday'][x]['day']['avgtemp_c']) + " C")
 
-    print(response_data['forecast']['forecastday'][2]['date'])
-    print("Temp: " + str(response_data['forecast']['forecastday'][2]['day']['avgtemp_c']) + " C")
-    print("Temp: " + str(response_data['forecast']['forecastday'][2]['day']['maxwind_kph']) + " kph")
-    print("Temp: " + str(response_data['forecast']['forecastday'][2]['day']['daily_chance_of_rain']) + " %")
-    print("Temp: " + str(response_data['forecast']['forecastday'][2]['day']['condition']['icon']))
+        # City wind.
+        print("Temp: " + str(response_data['forecast']['forecastday'][x]['day']['maxwind_kph']) + " kph")
 
-    #Old
-    #print(response_data['forecast']['forecastday'][1]['date'])
-    #print("Min temp: " + str(response_data['forecast']['forecastday'][1]['day']['mintemp_c']) + " C, Max temp: " + str(response_data['forecast']['forecastday'][1]['day']['maxtemp_c']) + " C")
+        # City chance of rain.
+        print("Temp: " + str(response_data['forecast']['forecastday'][x]['day']['daily_chance_of_rain']) + " %")
 
-    #print(response_data['forecast']['forecastday'][2]['date'])
-    #print("Min temp: " + str(response_data['forecast']['forecastday'][2]['day']['mintemp_c']) + " C, Max temp: " + str(response_data['forecast']['forecastday'][2]['day']['maxtemp_c']) + " C")
+        # City weather icon.
+        print("Temp: " + str(response_data['forecast']['forecastday'][x]['day']['condition']['icon']))
