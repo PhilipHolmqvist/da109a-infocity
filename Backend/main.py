@@ -22,21 +22,64 @@ cityWeather = get_cityWeather("Lund")
 #def list_cities(input): 
  #       return "The input was: " + str(input) #Begäran vill ha svar i HTML
 
-#Tillfällig frontpage route.
-@app.route("/<Cityname>", methods=['GET'])
-def frontpage():
+#Söksida route.
+@app.route("/<cityname>", methods=['GET'])
+def searchCity(cityname):
+
+    #Konstruera JSON fil enligt API Dokumentationen.
+    city = get_cityDetails(cityname)
+    country = get_countryDetails()
+
+    jsondata = {}
+    jsondata['wikidataID'] = ''
+    jsondata['countryName'] = ''
+    jsondata['flagImgUri'] = ''
+    jsondata['capital'] = ''
+    jsondata['callingCode'] = ''
+    jsondata['currencyCodes'] = ''
+    jsondata['tenEuroConversion'] = ''
+    jsondata['numRegions'] = ''
+    jsondata['city'] = city
+
+    city = {}
+    city['name'] = ''
+    city['region'] = ''
+    city['population'] = ''
+    city['wikidataID'] = ''
+    city['elevationMeters'] = ''
+    city['weather'] = weather
+
+    weather = {}
+    weather['DayOne'] = weatherDayOne
+    weather['DayTwo'] = weatherDayTwo
+    weather['DayThree'] = weatherDayThree
+
+    weatherDayOne = {}
+    weatherDayOne['tempAvg'] = ''
+    weatherDayOne['windMax'] = ''
+    weatherDayOne['chanceOfRain'] = ''
+    weatherDayOne['icon'] = ''
+
+    weatherDayTwo = {}
+    weatherDayTwo['tempAvg'] = ''
+    weatherDayTwo['windMax'] = ''
+    weatherDayTwo['chanceOfRain'] = ''
+    weatherDayTwo['icon'] = ''
+
+    weatherDayThree = {}
+    weatherDayThree['tempAvg'] = ''
+    weatherDayThree['windMax'] = ''
+    weatherDayThree['chanceOfRain'] = ''
+    weatherDayThree['icon'] = ''
+
+
     return(render_template("index.html"))
 
+#Index route.
 @app.route("/")
 def index():
     return render_template('index.html') # You have to save the html files inside of a 'templates' folder.
 
-@app.route("/")
-def style():
-    return render_template('style.css')
 
-@app.route("/")
-def script():
-    return render_template('weather.js')
 
 #app.run(debug=True)
