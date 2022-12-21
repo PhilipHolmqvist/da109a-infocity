@@ -38,6 +38,7 @@ def get_cityWeather(countryName):
     # City name, city country.
     print(response_data['location']['name'] + ", " + response_data['location']['country'])
     
+    
     for x in range(3):
         # City date of day 1
         print(response_data['forecast']['forecastday'][x]['date'])
