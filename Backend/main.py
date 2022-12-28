@@ -30,8 +30,8 @@ def searchCity(cityname):
         #Första bokstaven i stadens namn måste alltid vara stor!!!
         city = get_cityDetails(cityname.capitalize())
         print("response text:" + city.text)
+        print("Response text: " + weather.text)
 
-    '''
     jsondata = {}
     jsondata['wikidataID'] = ''
     jsondata['countryName'] = ''
@@ -42,7 +42,7 @@ def searchCity(cityname):
     jsondata['tenEuroConversion'] = ''
     jsondata['numRegions'] = ''
     jsondata['city'] = city
- 
+
     city = {}
     city['name'] = ''
     city['region'] = ''
@@ -74,7 +74,6 @@ def searchCity(cityname):
     weatherDayThree['chanceOfRain'] = ''
     weatherDayThree['icon'] = ''
 
-    '''
     return ("Test")
 
 @app.route("/")
