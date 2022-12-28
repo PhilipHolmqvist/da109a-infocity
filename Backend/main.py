@@ -14,22 +14,72 @@ from APIer.weather import get_cityWeather
 app = Flask(__name__)
  # setup(): Nödvändiga saker som ska göras när servern startar.
 
-#cityDetails = get_cityDetails("Malmö")
-cityWeather = get_cityWeather("Lund")
+#cityWeather = get_cityWeather("Lund")
 
 # Definera ändpunkter för de olika API metoderna.
 #@app.route("/<input>", methods=['GET']) #Lista alla enhörningar
 #def list_cities(input): 
  #       return "The input was: " + str(input) #Begäran vill ha svar i HTML
 
-#Tillfällig frontpage route.
-@app.route("/<Cityname>", methods=['GET'])
-def frontpage():
-    return(render_template("index.html"))
+#Söksida route.
+@app.route("/<cityname>", methods=['GET'])
+def searchCity(cityname):
+
+    #Konstruera JSON fil enligt API Dokumentationen.
+    if request.method == 'GET':
+        #Första bokstaven i stadens namn måste alltid vara stor!!!
+        city = get_cityDetails(cityname.capitalize())
+        print("response text:" + city.text)
+
+    '''
+    jsondata = {}
+    jsondata['wikidataID'] = ''
+    jsondata['countryName'] = ''
+    jsondata['flagImgUri'] = ''
+    jsondata['capital'] = ''
+    jsondata['callingCode'] = ''
+    jsondata['currencyCodes'] = ''
+    jsondata['tenEuroConversion'] = ''
+    jsondata['numRegions'] = ''
+    jsondata['city'] = city
+ 
+    city = {}
+    city['name'] = ''
+    city['region'] = ''
+    city['population'] = ''
+    city['wikidataID'] = ''
+    city['elevationMeters'] = ''
+    city['weather'] = weather
+
+    weather = {}
+    weather['DayOne'] = weatherDayOne
+    weather['DayTwo'] = weatherDayTwo
+    weather['DayThree'] = weatherDayThree
+
+    weatherDayOne = {}
+    weatherDayOne['tempAvg'] = ''
+    weatherDayOne['windMax'] = ''
+    weatherDayOne['chanceOfRain'] = ''
+    weatherDayOne['icon'] = ''
+
+    weatherDayTwo = {}
+    weatherDayTwo['tempAvg'] = ''
+    weatherDayTwo['windMax'] = ''
+    weatherDayTwo['chanceOfRain'] = ''
+    weatherDayTwo['icon'] = ''
+
+    weatherDayThree = {}
+    weatherDayThree['tempAvg'] = ''
+    weatherDayThree['windMax'] = ''
+    weatherDayThree['chanceOfRain'] = ''
+    weatherDayThree['icon'] = ''
+
+    '''
+    return ("Test")
 
 @app.route("/")
 def index():
-    return render_template('index.html') # You have to save the html files inside of a 'templates' folder.
+    return ("hejsan") # You have to save the html files inside of a 'templates' folder.
 
 @app.route("/")
 def style():
