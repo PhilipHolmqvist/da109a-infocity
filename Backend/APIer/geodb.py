@@ -1,5 +1,6 @@
 import requests
 import json
+from flask import jsonify
 
 # Author Philip Holmqvist
 
@@ -21,8 +22,9 @@ def get_cityDetails(cityName):
     }
 
     response = requests.request("GET", url, headers=headers)
-
-    print(response.text)
+    data = json.loads(response.text)
+    return data
+    
 
 # Returnerar stadens tid i ISO-8601 format: HHmmss.SSSZ
 def get_cityTime(cityName):
@@ -50,7 +52,8 @@ def get_countryDetails(countryID):
 
     response = requests.request("GET", url, headers=headers)
 
-    print(response.text)
+    data = json.loads(response.text)
+    return data
 
 # Hjälp metod för övriga metoder.
 def get_wikidataID(cityName):
