@@ -83,7 +83,7 @@ def searchCity(cityname):
 
     else:
         print("favicon error")
-        return("hej")    
+        return("hej")
 
 @app.route("/")
 def index():
