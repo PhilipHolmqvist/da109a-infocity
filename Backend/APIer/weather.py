@@ -31,18 +31,18 @@ def get_cityWeather(countryName):
         headers=headers, 
         params=querystring
     )
-    
+
     # Return response as a json format.
-    response_data = response.json()  
+    response_data = response.json()
 
     data = json.loads(response.text)
     return data
 
-    '''
+    # Det som händer nedan finns i main.py.
+    ''' 
     # City name, city country.
     #print(response_data['location']['name'] + ", " + response_data['location']['country'])
     response_data['location']['name'] + ", " + response_data['location']['country']
-    
     
     for x in range(3):
         # City date of day 1
