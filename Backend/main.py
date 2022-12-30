@@ -31,7 +31,6 @@ def searchCity(cityname):
         city = get_cityDetails(cityname.capitalize())
         print("response text:" + city.text)
 
-    '''
     jsondata = {}
     jsondata['wikidataID'] = ''
     jsondata['countryName'] = ''
@@ -74,7 +73,6 @@ def searchCity(cityname):
     weatherDayThree['chanceOfRain'] = ''
     weatherDayThree['icon'] = ''
 
-    '''
     return ("Test")
 
 @app.route("/")
