@@ -1,12 +1,12 @@
-# ****************************
+# **********************************************
 # Den här klassen är huvud filen för projektet.
-# ****************************
-
+# **********************************************
 
 # -*- coding: utf-8 -*-
 import time
 
 from flask import Flask, request
+from flask import render_template
 
 from APIer.geodb import get_cityDetails
 from APIer.geodb import get_cityTime
@@ -18,7 +18,8 @@ from APIer.weather import get_cityWeather
 # $env:FLASK_APP = "Backend\main.py"   --berätta för flask var applikation finnns
 # flask run --kör servern
 
-app = Flask(__name__)
+# Det som står efter __name__ är för att customiza sökvägen till filerna templates (html) samt static (css och js) för frontend.
+app = Flask(__name__, template_folder='../Frontend/templates', static_folder='../Frontend/static') 
 # setup(): Nödvändiga saker som ska göras när servern startar.
 
 # Definera ändpunkter för de olika API metoderna.
@@ -27,7 +28,7 @@ app = Flask(__name__)
 #       return "The input was: " + str(input) #Begäran vill ha svar i HTML
 
 # ****************************
-# Söksida route för stadsnamn.
+# Route /cityname
 # ****************************
 @app.route("/<cityname>", methods=['GET'])
 def searchCity(cityname):
@@ -93,8 +94,17 @@ def searchCity(cityname):
 # ****************************
 # Route /
 # ****************************
+
 @app.route("/")
 def index():
-    return ("Infocity") # You have to save the html files inside of a 'templates' folder.
+    return render_template('index.html') # You have to save the html files inside of a 'templates' folder.
+
+@app.route("/")
+def styles():
+    return render_template('styles.css')
+
+@app.route("/")
+def scrip():
+    return render_template('script.js') 
 
 #app.run(debug=True)
