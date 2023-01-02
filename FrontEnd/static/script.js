@@ -1,5 +1,5 @@
 // ******************************
-// EXEMPEL LATHUND FÖR JAVASCRIPT
+// Javascript för att presentera json i frontend
 // ******************************
 
 var cityName = ""
