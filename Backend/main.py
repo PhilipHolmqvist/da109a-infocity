@@ -38,6 +38,7 @@ def searchCity(cityname):
     # Konstruera JSON fil enligt API Dokumentationen.
     if request.method == 'GET' and cityname != "favicon.ico":
         #Första bokstaven i stadens namn måste alltid vara stor!!!
+        print("cityname: " + cityname)
         cityInfo = get_cityDetails(cityname.capitalize())
         cityWeather = get_cityWeather(cityname.capitalize())
         time.sleep(1) # Pausa 1 s pga. api begräsningar.
@@ -46,7 +47,6 @@ def searchCity(cityname):
         currencyto = json.dumps(currencyto, indent=None)
         currencyto = currencyto.replace('[', '').replace(']', '').replace('"','')
         euroconversion = get_rate("EUR", currencyto, 10)
-        print(countryInfo)
     
         weatherDayOne = {}
         weatherDayOne['tempAvg'] = cityWeather['forecast']['forecastday'][0]['day']['avgtemp_c']
@@ -90,6 +90,7 @@ def searchCity(cityname):
         jsondata['numRegions'] = countryInfo['data']['numRegions']
         jsondata['city'] = city      
 
+        print("Server sending response data")
         return (jsondata)
 
     else:
