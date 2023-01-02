@@ -30,9 +30,17 @@ app = Flask(__name__, template_folder='../Frontend/templates', static_folder='..
 #       return "The input was: " + str(input) #Begäran vill ha svar i HTML
 
 # ****************************
+# Route /
+# ****************************
+@app.route("/")
+def main():
+    return render_template('info.html') # You have to save the html files inside of a 'templates' folder.
+
+
+# ****************************
 # Route /cityname
 # ****************************
-@app.route("/<cityname>", methods=['GET'])
+@app.route('/<string:cityname>', methods=['GET'])
 def searchCity(cityname):
 
     # Konstruera JSON fil enligt API Dokumentationen.
@@ -96,21 +104,5 @@ def searchCity(cityname):
     else:
         print("Fatal error 505: favicon not found.")
         return("Infocity error")
-
-# ****************************
-# Route /
-# ****************************
-
-@app.route("/")
-def index():
-    return render_template('index.html') # You have to save the html files inside of a 'templates' folder.
-
-@app.route("/")
-def styles():
-    return render_template('styles.css')
-
-@app.route("/")
-def scrip():
-    return render_template('script.js') 
 
 #app.run(debug=True)
