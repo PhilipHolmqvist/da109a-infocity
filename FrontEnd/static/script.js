@@ -4,7 +4,6 @@
 
 var cityName = ""
 
-
 function fetchCity() {
     return function () {
         cityName = $("#input").val();
@@ -26,6 +25,7 @@ function fetchCity() {
         });
     }
 }
+
 
 $(document).ready(function () {
     $("#search").click(fetchCity());

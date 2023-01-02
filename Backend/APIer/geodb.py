@@ -22,6 +22,8 @@ def get_cityDetails(cityName):
     }
 
     response = requests.request("GET", url, headers=headers)
+    print("City details response: ")
+    print(response.text)
     data = json.loads(response.text)
     return data
     
@@ -51,7 +53,7 @@ def get_countryDetails(countryID):
     }
 
     response = requests.request("GET", url, headers=headers)
-
+    print("Country details response: ")
     data = json.loads(response.text)
     return data
 
@@ -70,4 +72,7 @@ def get_wikidataID(cityName):
     for s in response_data['entities'].keys():
         cityID = s
     
+    print("CityID:")
+    print(cityID)
+
     return cityID

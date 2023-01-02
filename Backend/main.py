@@ -4,6 +4,7 @@
 
 # -*- coding: utf-8 -*-
 import time
+import json
 
 from flask import Flask, request
 from flask import render_template
@@ -12,6 +13,7 @@ from APIer.geodb import get_cityDetails
 from APIer.geodb import get_cityTime
 from APIer.geodb import get_countryDetails
 from APIer.weather import get_cityWeather
+from APIer.currencyConverter import get_rate
 
 # OBSERVERA! Det som står nedan finns redan i projekt dokumentationen under rubriken 'Användarmanual'
 # python -m venv myenv --för att skapa en ny virtuell miljö
@@ -44,12 +46,15 @@ def searchCity(cityname):
     # Konstruera JSON fil enligt API Dokumentationen.
     if request.method == 'GET' and cityname != "favicon.ico":
         #Första bokstaven i stadens namn måste alltid vara stor!!!
+        print("cityname: " + cityname)
         cityInfo = get_cityDetails(cityname.capitalize())
         cityWeather = get_cityWeather(cityname.capitalize())
-
         time.sleep(1) # Pausa 1 s pga. api begräsningar.
         countryInfo = get_countryDetails(cityInfo['data']['countryCode'])
-        print(countryInfo)
+        currencyto = countryInfo['data']['currencyCodes']
+        currencyto = json.dumps(currencyto, indent=None)
+        currencyto = currencyto.replace('[', '').replace(']', '').replace('"','')
+        euroconversion = get_rate("EUR", currencyto, 10)
     
         weatherDayOne = {}
         weatherDayOne['tempAvg'] = cityWeather['forecast']['forecastday'][0]['day']['avgtemp_c']
@@ -89,10 +94,11 @@ def searchCity(cityname):
         jsondata['capital'] = countryInfo['data']['capital']
         jsondata['callingCode'] = countryInfo['data']['callingCode']
         jsondata['currencyCodes'] = countryInfo['data']['currencyCodes']
-        jsondata['tenEuroConversion'] = '100'
+        jsondata['tenEuroConversion'] = euroconversion
         jsondata['numRegions'] = countryInfo['data']['numRegions']
         jsondata['city'] = city      
 
+        print("Server sending response data")
         return (jsondata)
 
     else:
