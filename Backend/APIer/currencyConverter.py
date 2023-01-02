@@ -2,6 +2,9 @@ import requests
 import json
 
 def get_rate(currencyfrom, currencyto, amount):
+    #currencyto = json.dumps(currencyto, indent=None)
+    #print("after " + currencyto)
+
     url = "https://currency-converter5.p.rapidapi.com/currency/convert"
     queryString = {"format":"json", "from":currencyfrom, "to": currencyto, "amount":amount}
     headers = {
@@ -10,12 +13,17 @@ def get_rate(currencyfrom, currencyto, amount):
     }
     response = requests.request("GET", url, headers = headers, params=queryString)
     data = json.loads(response.text)
+    '''
     print("From: " + data['base_currency_name'])
     print("Amount: " + data['amount'] + " " + currencyfrom)
     print("To: " + data['rates'][currencyto]['currency_name'])
     print("Amount: " + data['rates'][currencyto]['rate_for_amount'] + " " + currencyto)
     print("Current rate: " + data['rates'][currencyto]['rate'] + " " + currencyto + " / 1 " + currencyfrom)
-    return data
+    '''
+    
+    result = data['rates'][currencyto]['rate_for_amount'] + " " + currencyto
+
+    return result
 
 def getCodes(currencyfrom, currencyto, amount):
 

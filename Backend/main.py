@@ -5,6 +5,7 @@
 
 # -*- coding: utf-8 -*-
 import time
+import json
 
 from flask import Flask, request
 
@@ -38,10 +39,12 @@ def searchCity(cityname):
         #Första bokstaven i stadens namn måste alltid vara stor!!!
         cityInfo = get_cityDetails(cityname.capitalize())
         cityWeather = get_cityWeather(cityname.capitalize())
-        currencyto = countryInfo['data']['currencyCodes']
-        euroconversion = get_rate("EUR", currencyto, 10)
         time.sleep(1) # Pausa 1 s pga. api begräsningar.
         countryInfo = get_countryDetails(cityInfo['data']['countryCode'])
+        currencyto = countryInfo['data']['currencyCodes']
+        currencyto = json.dumps(currencyto, indent=None)
+        currencyto = currencyto.replace('[', '').replace(']', '').replace('"','')
+        euroconversion = get_rate("EUR", currencyto, 10)
         print(countryInfo)
     
         weatherDayOne = {}
@@ -82,7 +85,7 @@ def searchCity(cityname):
         jsondata['capital'] = countryInfo['data']['capital']
         jsondata['callingCode'] = countryInfo['data']['callingCode']
         jsondata['currencyCodes'] = countryInfo['data']['currencyCodes']
-        jsondata['tenEuroConversion'] = euroconversion['rates'][currencyto]['rate_for_amount']
+        jsondata['tenEuroConversion'] = euroconversion
         jsondata['numRegions'] = countryInfo['data']['numRegions']
         jsondata['city'] = city      
 
