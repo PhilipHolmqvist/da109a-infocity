@@ -21,7 +21,7 @@ from APIer.currencyConverter import get_rate
 # flask run --kör servern
 
 # Det som står efter __name__ är för att customiza sökvägen till filerna templates (html) samt static (css och js) för frontend.
-app = Flask(__name__, template_folder='../Frontend/templates', static_folder='../Frontend/static') 
+app = Flask(__name__, template_folder='../FrontEnd/templates', static_folder='../FrontEnd/static') 
 # setup(): Nödvändiga saker som ska göras när servern startar.
 
 # Definera ändpunkter för de olika API metoderna.
