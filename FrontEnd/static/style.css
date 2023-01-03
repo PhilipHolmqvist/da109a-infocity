@@ -38,8 +38,6 @@ a {
     border-radius: 20px;
 }
 
-
-
 #search {
     padding-left: 0px;
     width: 75px;
@@ -54,7 +52,7 @@ a {
 }
 
 body {
-    background-image: url(/FrontEnd/icons/823-8236593_singapore-city-transparent.png);
+    background-image: url(/static/img/823-8236593_singapore-city-transparent.png);
 }
 
 #background {
