@@ -22,8 +22,11 @@ body{
 }
 
 .wrapper{
-    width: 600px;
-    padding: 30px;
+    width: 350px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
     border-radius: 7px;
     background: #fff;
     box-shadow: 7px 7px 20px rgba(0,0,0,0.05);
