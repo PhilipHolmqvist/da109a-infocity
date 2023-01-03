@@ -1,23 +1,47 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <meta charset="UTF-8">
-    <title>Infocity</title>
+    <head>
+        <meta charset="UTF-8">
+        <title>Infocity</title>
 
-    <link rel="stylesheet" href="../static/styles.css"> <!-- Filsökvägen ska vara på det viset. -->
+        <link rel="stylesheet" href="../static/style.css">
 
-    <!-- Lägg  till flera saker här om det saknas eller behövs. -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 
-    <script type="text/javascript" src="../static/script.js"></script> <!-- Filsökvägen ska vara på det viset. -->
+        <script type="text/javascript" src="../static/weather.js"></script>
 
-</head>
+    </head>
 
-<body>
+    <body>
+        <div class="grid">
+            <header>
+                <h1>Infocity</h1>
+            </header>
 
-    <h1>Det här är en exempel lathund av html sida med css och tillkopplat js!</h1>
-    <img src="../icons/infocity-icon_v2_221227.png" alt="Infocity Logo" width="200">
-
-</body>
+            <section>
+                <div id="hej">
+                    <h1>Sökruta:</h1>
+                    <div id="search">    
+                        <input id="search-bar" type="text" placeholder="Search for a country/region/city">
+                        <input type="submit" value="Sök" id="search_button">   
+                    </div>
+                    <div id="info">
+                        <h1>Info om sidan</h1>
+                        <h3>Vad är sidan om? fetstill  </h3>
+                        <p>
+                            Denna sidan handlar om hur det ser ut i landet, region eller stad. När man har sökt på något av det får man information om hur det ser ut.                   
+                        </p>
+                        <h3>Hur fungera sidan? fetstill</h3>
+                        <p>
+                            Det fungera på det sätta att man skriver in en stad, region eller land.
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </body>
 
 </html>
