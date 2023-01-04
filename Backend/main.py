@@ -114,4 +114,11 @@ def searchCity(cityname):
         print("Fatal error 505: favicon not found.")
         return("Infocity error")
 
+# ****************************
+# Route /cityname/temperature
+# ****************************
+@app.route('/<string:cityname>/<int:temperature>', methods=['GET'])
+def temperatureCountry(temperature):
+    print("Hello")
+
 #app.run(debug=True)

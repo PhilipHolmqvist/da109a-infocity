@@ -35,4 +35,13 @@ $(document).ready(function () {
         });
     });
 
+
+    $.ajax({
+        url: 'http://localhost:5000',
+        headers: {"Accept": "application/json"}
+    })
+    .done(function (result) { 
+    });
+
+
 });
