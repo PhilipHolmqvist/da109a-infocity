@@ -20,7 +20,7 @@
 }
 
 a {
-    text-decoration: line-through;
+    text-decoration: none;
     font-size: 25px;
     float: left;
 }
@@ -70,12 +70,11 @@ body {
 
 }
 
-#info {
-    width: 100%;
+#first_info {
+    width: 99%;
+    padding-left: 10px;
     border: 1px solid black;
-    padding-top: 25px;
-    padding-left: 25px;
-    height: 500px;
+    height: 600px;
 }
 
 #cityFlag {
@@ -105,7 +104,7 @@ body {
 }
 
 body{
-    background-color: lightgrey;
+    background-image: url(/static/img/nedladdning.jpg);
 }
 
 body > .grid{
@@ -149,6 +148,7 @@ section{
     background-color: rgb(155, 155, 155);
     border-bottom-right-radius: 20px;
     border-bottom-left-radius: 20px;
+    padding-bottom: 10px;
 }
 
 #search{
