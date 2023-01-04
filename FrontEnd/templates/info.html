@@ -11,7 +11,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"/>
     <script type="text/javascript" src="../static/script.js"></script>
 
 </head>
@@ -34,7 +34,33 @@
             <p id="titel-info"></p>
         </div>
         <div id="currency">
-            <p class="titel">Valuta</p>
+            <div class="wrapper">
+                <header>Currency Converter</header>
+                <form action="#">
+                    <div class="amount">
+                        <p>Enter Amount</p>
+                        <input type="text" value="1">
+                    </div>
+                    <div class="drop-list">
+                        <div class="from">
+                            <p>From</p>
+                            <div class="select-box">
+                                <select></select>
+                            </div>
+                        </div>
+                        
+                        <div class="icon"><i class="fa-solid fa-right-left"></i></div>
+                        <div class="to">
+                            <p>To</p>
+                            <div class="select-box">
+                                <select></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="exchange-rate">Results will be shown here</div>
+                    <button>Get Exchange Rate</button>
+                </form>
+            </div>
         </div>
         <div id="weather">
             <p class="titel">Väder</p>
@@ -44,6 +70,8 @@
     </div>
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../static/countrylist.js"></script>
+<script type="text/javascript" src="../static/currencyscript.js"></script>
 </body>
 
 </html>
