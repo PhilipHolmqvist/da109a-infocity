@@ -5,6 +5,7 @@
 # -*- coding: utf-8 -*-
 import time
 import json
+import string
 
 from flask import Flask, request
 from flask import render_template
