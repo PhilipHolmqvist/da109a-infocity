@@ -1,32 +1,29 @@
-// ******************************
-// Javascript för att presentera json i frontend
-// ******************************
+// **************************************
+// Js för att presentera json i frontend
+// **************************************
 
 var cityName = ""
 
-function fetchCity() {
-    return function () {
+$(document).ready(function () {
+
+    $("#search").click(function () {
+
         cityName = $("#input").val();
 
-        //alert(cityName + " 1");
-        //console.log("Hello");
-
         $.ajax({
-            url: "https://http://localhost:5000/" + cityName, // Vi refererar till vår sida!
-            headers: { "Accept": "application/json" }
-        }).done(function (response) { // Här ska vi behandla responsen.
+            url: 'http://localhost:5000/' + cityName, // Vi refererar till vår sida.
+            headers: {"Accept": "application/json"}   // Vi vill ha tillbaka json.
+          })
+          .done(function (data) { // Här ska vi behandla data.
 
-            console.log(response.text); // Kolla i konsollen, en json fil ska finnas.
+            // Get response and present on the html using jquery.
+            $('#cityName').text(data['city']['name'] + ", " + data['countryName']);
+            $('#cityInfo').text("Population: " + data['city']['population']);
+            $('#cityCurrency').text("Currency: " + data['currencyCodes']);
+            $('#cityWeather').text("Avg temp: " + data['city']['weather']['DayOne']['tempAvg'] + " C.");
 
-            // Nedan ska vi koppla elementer från html med id och sätta det vi vill presentera i sidan från vår json fil. Johans lab är perfek hjälp till detta :)
-            $('#test').text(cityName); //response['city']['name']
-            alert(cityName + " 2");
-
+            $("#input").val(""); // Lastly, reset the input field.
         });
-    }
-}
-
-
-$(document).ready(function () {
-    $("#search").click(fetchCity());
+    });
+    
 });
