@@ -17,13 +17,22 @@ $(document).ready(function () {
           .done(function (data) { // Här ska vi behandla data.
 
             // Get response and present on the html using jquery.
+
+            // INFO
             $('#cityName').text(data['city']['name'] + ", " + data['countryName']);
             $('#cityInfo').text("Population: " + data['city']['population']);
+            $("#cityFlag").attr("src", data['flagImgUri']);
+
+            // CURRENCY
             $('#cityCurrency').text("Currency: " + data['currencyCodes']);
+
+            // WEATHER
             $('#cityWeather').text("Avg temp: " + data['city']['weather']['DayOne']['tempAvg'] + " C.");
 
-            $("#input").val(""); // Lastly, reset the input field.
+            
+            // Lastly, reset the input field.
+            $("#input").val(""); 
         });
     });
-    
+
 });

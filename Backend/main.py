@@ -35,6 +35,14 @@ app = Flask(__name__, template_folder='../FrontEnd/templates', static_folder='..
 # ****************************
 @app.route("/")
 def main():
+    return render_template('index.html') # You have to save the html files inside of a 'templates' folder.
+
+@app.route("/index.html")
+def index():
+    return render_template('index.html') # You have to save the html files inside of a 'templates' folder.
+
+@app.route("/info.html")
+def info():
     return render_template('info.html') # You have to save the html files inside of a 'templates' folder.
 
 

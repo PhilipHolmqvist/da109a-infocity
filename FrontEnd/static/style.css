@@ -78,6 +78,10 @@ body {
     height: 500px;
 }
 
+#cityFlag {
+    width: 100px;
+}
+
 #currency {
     float: right;
     width: 100%;
