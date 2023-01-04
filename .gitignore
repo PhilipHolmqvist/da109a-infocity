@@ -3,3 +3,4 @@ Backend/__pycache__
 Backend/APIer/__pycache__
 requirements.txt
 myenv
+myenv/pyvenv.cfg
