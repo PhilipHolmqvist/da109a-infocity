@@ -74,7 +74,7 @@ body {
     width: 99%;
     padding-left: 10px;
     border: 1px solid black;
-    height: 600px;
+    min-height: 100vh;
 }
 
 #cityFlag {
@@ -104,7 +104,7 @@ body {
 }
 
 body{
-    background-image: url(/FrontEnd/static/img/823-8236593_singapore-city-transparent.png);
+    background-image: url(/static/img/823-8236593_singapore-city-transparent.png);
     background-color: grey;
 }
 
@@ -115,6 +115,12 @@ body{
     padding-left: 30%;
 }
 
+#icon_link{
+    text-align: center;
+    width: 90px;
+    height: 90px;
+    margin-left: 45%;
+}
 
 body > .grid{
     display: grid;
