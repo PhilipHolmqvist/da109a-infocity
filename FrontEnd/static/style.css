@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
-*{
+* {
     font-family: 'Poppins', sans-serif;
 }
 
 
-.nav{
+.nav {
     width: 100%;
     background-color: rgb(32, 32, 32);
     padding-bottom: 10px;
@@ -13,7 +13,7 @@
     position: sticky;
 }
 
-.name{
+.name {
     text-decoration: none;
     padding-left: 8px;
     width: 78%;
@@ -31,7 +31,7 @@ a {
     padding-left: 5px;
 }
 
-.name a:hover{
+.name a:hover {
     color: white;
 }
 
@@ -74,11 +74,11 @@ body {
     width: 99%;
     padding-left: 10px;
     border: 1px solid black;
-    height: 600px;
+    height: auto;
 }
 
 #cityFlag {
-    width: 100px;
+    width: 120px;
 }
 
 #currency {
@@ -87,28 +87,19 @@ body {
     padding-left: 25px;
     padding-top: 25px;
     border: 1px solid black;
-    
-}
 
-#weather {
-    float: left;
-    width: 100%;
-    padding-left: 25px;
-    padding-top: 25px;
-    border: 1px solid black;
-    height: 200px;
 }
 
 .titel {
     font-size: 35px;
 }
 
-body{
+body {
     background-image: url(/static/img/823-8236593_singapore-city-transparent.png);
     background-color: grey;
 }
 
-#first_site{
+#first_site {
     width: 40%;
     height: 40%;
     margin: 0px;
@@ -116,21 +107,21 @@ body{
 }
 
 
-body > .grid{
+body>.grid {
     display: grid;
-    grid-template-areas: 
-    'header'
-    'section'
+    grid-template-areas:
+        'header'
+        'section'
     ;
 }
 
-header{
+header {
     grid-area: header;
     display: flex;
     justify-content: center;
 }
 
-header > h1{
+header>h1 {
     border-top-right-radius: 20px;
     border-top-left-radius: 20px;
     padding-left: 20px;
@@ -142,13 +133,13 @@ header > h1{
 }
 
 
-section{
+section {
     grid-area: section;
     display: flex;
     justify-content: center;
 }
 
-#hej{
+#hej {
     display: flex;
     flex-direction: column;
     padding-left: 20px;
@@ -160,12 +151,12 @@ section{
     padding-bottom: 10px;
 }
 
-#search > h1{
+#search>h1 {
     margin: 0%;
     margin-bottom: 10px;
 }
 
-#search-bar{
+#search-bar {
     flex: 1;
     border: none;
     outline: none;
@@ -173,7 +164,7 @@ section{
     border-bottom-left-radius: 20px;
 }
 
-#search-button{
+#search-button {
     padding: 20px;
     border: none;
     outline: none;
@@ -183,23 +174,23 @@ section{
     border-bottom-right-radius: 20px;
 }
 
-#info{
+#info {
     margin-top: 10px;
     text-align: center;
     padding-bottom: 10px;
 }
 
-#info >h3{
+#info>h3 {
     display: flex;
 }
 
-#info > p{
+#info>p {
     display: flex;
 }
 
 
 
-.wrapper{
+.wrapper {
     width: 350px;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -207,51 +198,51 @@ section{
     padding-right: 15px;
     border-radius: 7px;
     background: #fff;
- 
+
 }
 
-.wrapper header{
+.wrapper header {
     font-size: 28px;
     font-weight: 500;
     text-align: center;
 }
 
-.wrapper form{
+.wrapper form {
     margin: 40px 0 20px 0;
 }
 
-form :where(input, select, button){
+form :where(input, select, button) {
     width: 100%;
     outline: none;
     border-radius: 5px;
     border: none;
 }
 
-form p{
+form p {
     font-size: 18px;
     margin-bottom: 5px;
 }
 
-form input{
-    height: 50px; 
+form input {
+    height: 50px;
     font-size: 17px;
     padding: 0 15px;
     border: 1px solid #999
 }
 
-form input:focus{
+form input:focus {
     margin-top: 0 14px;
     border: 2px solid #416dfd
 }
 
-form .drop-list{
+form .drop-list {
     display: flex;
     margin-top: 20px;
     align-items: center;
     justify-content: space-between;
 }
 
-.drop-list .select-box{
+.drop-list .select-box {
     display: flex;
     width: 115px;
     height: 45px;
@@ -261,43 +252,43 @@ form .drop-list{
     border: 1px solid #999;
 }
 
-.select-box img{
+.select-box img {
     max-width: 21px;
 }
 
-.select-box select{
+.select-box select {
     width: auto;
     font-size: 16px;
     background: none;
     margin: 0 -5px 0 5px
 }
 
-.select-box select::-webkit-scrollbar{
+.select-box select::-webkit-scrollbar {
     width: 8px;
 }
 
-.select-box select::-webkit-scrollbar-track{
+.select-box select::-webkit-scrollbar-track {
     background: #fff
 }
 
-.select-box select::-webkit-scrollbar-thumb{
+.select-box select::-webkit-scrollbar-thumb {
     background: #888;
     border-radius: 8px;
     border-right: 2px solid #ffffff;
 }
 
-.drop-list .icon{
+.drop-list .icon {
     cursor: pointer;
     margin-top: 30px;
-    font-size: 22px;  
+    font-size: 22px;
 }
 
-form .exchange-rate{
+form .exchange-rate {
     font-size: 17px;
     margin: 20px 0 30px;
 }
 
-form button{
+form button {
     height: 52px;
     color: #fff;
     font-size: 17px;
@@ -306,6 +297,28 @@ form button{
     transition: 0.3s ease;
 }
 
-form button:hover{
+form button:hover {
     background: #416dfd;
+}
+
+/* WEATHER */
+
+#weather {
+    background-color: rgba(221, 219, 219, 0.5);
+    float: left;
+    width: 100%;
+    padding-left: 25px;
+    padding-top: 25px;
+    border: 1px solid black;
+    height: auto;
+}
+
+.grid-container-weather {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 5px;
+}
+
+.grid-item-weather {
+    padding: 10px;
 }

@@ -3,13 +3,11 @@
 # **********************************************
 
 # -*- coding: utf-8 -*-
-import time
-import json
-import string
+import time, json, string
 
-from flask import Flask, request
-from flask import render_template
+from flask import Flask, jsonify, request, url_for, render_template
 from flask_cors import CORS
+
 
 from APIer.geodb import get_cityDetails
 from APIer.geodb import get_cityTime
@@ -22,17 +20,17 @@ from APIer.currencyConverter import get_rate
 # $env:FLASK_APP = "Backend\main.py"   --berätta för flask var applikation finnns
 # flask run --kör servern
 
-app = Flask(__name__)
-CORS(app)
+# Det som står efter __name__ är för att customiza sökvägen till filerna templates (html) samt static (css, js och bilder) för frontend.
+# app = Flask(__name__, template_folder='../FrontEnd/templates', static_folder='../FrontEnd/static') 
 
 #Startar servern direkt när man trycker "play". Servern kör på port 6969.
 #eller när man skriver:
 #    python Backend\main.py
 
-
-
-
 # setup(): Nödvändiga saker som ska göras när servern startar.
+
+app = Flask(__name__)
+CORS(app)
 
 # Definera ändpunkter för de olika API metoderna.
 #@app.route("/<input>", methods=['GET']) #Lista alla enhörningar
@@ -40,26 +38,44 @@ CORS(app)
 #       return "The input was: " + str(input) #Begäran vill ha svar i HTML
 
 
+'''
+# ****************************
+# Route /
+# ****************************
+@app.route("/")
+def main():
+    return render_template('info.html')
+
+@app.route("/index.html")
+def index():
+    return render_template('index.html')
+
+@app.route("/info.html")
+def info():
+    return render_template('info.html')
+'''
 
 # ****************************
 # Route /cityname
 # ****************************
-@app.route('/<cityname>', methods=['GET'])
+@app.route('/<string:cityname>', methods=['GET']) #Första bokstaven i stadens namn måste alltid vara stor!!!
 def searchCity(cityname):
 
-    # Konstruera JSON fil enligt API Dokumentationen.
-    if request.method == 'GET' and cityname != "favicon.ico":
-        #Första bokstaven i stadens namn måste alltid vara stor!!!
-        print("cityname: " + cityname)
+    
+    if request.headers.get("Accept") == "application/json": 
+
+        print("Cityname: " + cityname)
+
+        # Konstruera JSON fil enligt API Dokumentationen.
         cityInfo = get_cityDetails(cityname.capitalize())
         cityWeather = get_cityWeather(cityname.capitalize())
         time.sleep(1) # Pausa 1 s pga. api begräsningar.
         countryInfo = get_countryDetails(cityInfo['data']['countryCode'])
-        #currencyto = countryInfo['data']['currencyCodes']
-        #currencyto = json.dumps(currencyto, indent=None)
-        #currencyto = currencyto.replace('[', '').replace(']', '').replace('"','')
-        #euroconversion = get_rate("EUR", currencyto, 10)
-    
+        currencyto = countryInfo['data']['currencyCodes']
+        currencyto = json.dumps(currencyto, indent=None)
+        currencyto = currencyto.replace('[', '').replace(']', '').replace('"','')
+        euroconversion = get_rate("EUR", currencyto, 10)
+        
         weatherDayOne = {}
         weatherDayOne['tempAvg'] = cityWeather['forecast']['forecastday'][0]['day']['avgtemp_c']
         weatherDayOne['windMax'] = cityWeather['forecast']['forecastday'][0]['day']['maxwind_kph']
@@ -102,19 +118,27 @@ def searchCity(cityname):
         jsondata['numRegions'] = countryInfo['data']['numRegions']
         jsondata['city'] = city      
 
-        print("Server sending response data")
+        print("-----------------------------")
+        print("Server sending response data:")
+        print("-----------------------------")
+        print(jsondata)
+
         return (jsondata)
-
     else:
-        print("Fatal error 505: favicon not found.")
-        return("Infocity error")
+        print("Else!")
+        return "Else!"
+
 
 # ****************************
-# Route /cityname/temperature
+# Route /test
 # ****************************
-@app.route('/<string:cityname>/<int:temperature>', methods=['GET'])
-def temperatureCountry(temperature):
-    print("Hello")
+@app.route('/<string:test>', methods=['GET'])
+def test(test):
+    print("Before")
+    print("After")
+
+if __name__ == "__main__":
+    app.run("localhost", 6969)    
 
 #Route för att lista ett visst antal av de största städerna i ett land.
 #Returnerar en JSON fil med städer i sjunkande storleksordning.

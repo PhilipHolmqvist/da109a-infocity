@@ -2,8 +2,6 @@
 // Js för att presentera json i frontend
 // **************************************
 
-
-
 var xhr = null;
 getXmlHttpRequestObject = function () {
         if (!xhr) {
@@ -12,7 +10,6 @@ getXmlHttpRequestObject = function () {
         }
         return xhr;
     };
-
 
 function dataCallback() {
     // Check response is ready or not
@@ -57,7 +54,6 @@ function dataCallback() {
 
     }
 }
-
 
 function getCity() {
     console.log("Get city...");
