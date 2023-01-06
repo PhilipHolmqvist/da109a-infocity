@@ -44,13 +44,13 @@
                 <form action="#">
                     <div class="amount">
                         <p>Enter Amount</p>
-                        <input type="text" value="1">
+                        <input id="amount" type="text" value="10">
                     </div>
                     <div class="drop-list">
                         <div class="from">
                             <p>From</p>
                             <div class="select-box">
-                                <select></select>
+                                <select id="currencyfrom"></select>
                             </div>
                         </div>
                         
@@ -58,12 +58,12 @@
                         <div class="to">
                             <p>To</p>
                             <div class="select-box">
-                                <select></select>
+                                <select id="currencyto"></select>
                             </div>
                         </div>
                     </div>
-                    <div class="exchange-rate">Results will be shown here</div>
-                    <button>Get Exchange Rate</button>
+                    <div class="exchange-rate"></div>
+                    <button id="exchangebtn" onclick="convert()">Get Exchange Rate</button>
                 </form>
             </div>
         </div>
