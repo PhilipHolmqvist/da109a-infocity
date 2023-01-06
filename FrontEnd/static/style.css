@@ -35,10 +35,29 @@ a {
     color: white;
 }
 
-#search-bar {
-    padding-top: 8px;
-    float: right;
-    text-align: center;
+#search_first{
+    width: 100%;
+    height: 55px;
+    display: flex;
+    padding-bottom: 10px;
+}
+
+#search-bar{
+    flex: 1;
+    border: none;
+    outline: none;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+#search_button{
+    padding: 20px;
+    border: none;
+    outline: none;
+    letter-spacing: 1px;
+    cursor: pointer;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
 
 #input {
