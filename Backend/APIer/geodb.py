@@ -1,5 +1,6 @@
 import requests
 import json
+from .wikipedia import get_wikidataID
 from flask import jsonify
 
 # Author Philip Holmqvist
@@ -57,22 +58,3 @@ def get_countryDetails(countryID):
     data = json.loads(response.text)
     return data
 
-# Hjälp metod för övriga metoder.
-def get_wikidataID(cityName):
-
-    url = "http://www.wikidata.org/w/api.php?action=wbgetentities&sites=enwiki&titles=" + cityName + "&props=descriptions&languages=en&format=json"
-    
-    # will return "Q25796287" as the value of the "wikibase_item" key.
-
-    response = requests.request("GET", url)
-    response_data = response.json()
-    
-    cityID = 0
-
-    for s in response_data['entities'].keys():
-        cityID = s
-    
-    print("CityID:")
-    print(cityID)
-
-    return cityID

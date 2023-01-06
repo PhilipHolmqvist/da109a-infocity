@@ -2,64 +2,75 @@
 // Js för att presentera json i frontend
 // **************************************
 
-$(document).ready(function () {
+var xhr = null;
+getXmlHttpRequestObject = function () {
+        if (!xhr) {
+            // Create a new XMLHttpRequest object 
+            xhr = new XMLHttpRequest();
+        }
+        return xhr;
+    };
 
-    $("#searchCity").click(function () {
+function dataCallback() {
+    // Check response is ready or not
+    if (xhr.readyState == 4 && xhr.status == 200) {
+        console.log("Data received!");
+        //getDate();
 
-        var cityName = $("#input").val();
+        var jsonFile = JSON.parse(xhr.responseText);
+        
+        document.getElementById('callingCode').innerHTML = jsonFile.callingCode;
+        document.getElementById('capital').innerHTML = jsonFile.capital;
+        document.getElementById('countryName').innerHTML = jsonFile.countryName;
+        document.getElementById('currencyCodes').innerHTML = jsonFile.currencyCodes;
+        document.getElementById('flagImgUri').innerHTML = jsonFile.flagImgUri;
+        document.getElementById('numRegions').innerHTML = jsonFile.numRegions;
+        document.getElementById('tenEuroConversion').innerHTML = jsonFile.tenEuroConversion;
+        document.getElementById('wikidataID').innerHTML = jsonFile.wikidataID;
 
-        $.ajax({
-            url: 'http://localhost:5000/' + cityName, // Vi refererar till vår sida.
-            headers: {"Accept": "application/json"}   // Vi vill ha tillbaka json.
-          })
-          .done(function (data) { // Här ska vi behandla data.
+        document.getElementById('city-elevationMeters').innerHTML = jsonFile.city.elevationMeters;
+        document.getElementById('city-name').innerHTML = jsonFile.city.name;
+        document.getElementById('city-population').innerHTML = jsonFile.city.population;
+        document.getElementById('city-region').innerHTML = jsonFile.city.region;
+        document.getElementById('city-wikidataID').innerHTML = jsonFile.city.wikidataID;
 
-            //alert($('#cityNameForm input[name=id]').val());
+        document.getElementById('city-weather-DayOne-chanceOfRain').innerHTML = jsonFile.city.weather.DayOne.chanceOfRain;
+        document.getElementById('city-weather-DayOne-icon').innerHTML = jsonFile.city.weather.DayOne.icon;
+        document.getElementById('city-weather-DayOne-tempAvg').innerHTML = jsonFile.city.weather.DayOne.tempAvg;
+        document.getElementById('city-weather-DayOne-windMax').innerHTML = jsonFile.city.weather.DayOne.windMax;
+        
+        document.getElementById('city-weather-DayTwo-chanceOfRain').innerHTML = jsonFile.city.weather.DayTwo.chanceOfRain;
+        document.getElementById('city-weather-DayTwo-icon').innerHTML = jsonFile.city.weather.DayTwo.icon;
+        document.getElementById('city-weather-DayTwo-tempAvg').innerHTML = jsonFile.city.weather.DayTwo.tempAvg;
+        document.getElementById('city-weather-DayTwo-windMax').innerHTML = jsonFile.city.weather.DayTwo.windMax;
 
-            // Get response and present on the html using jquery.
+        document.getElementById('city-weather-DayThree-chanceOfRain').innerHTML = jsonFile.city.weather.DayThree.chanceOfRain;
+        document.getElementById('city-weather-DayThree-icon').innerHTML = jsonFile.city.weather.DayThree.icon;
+        document.getElementById('city-weather-DayThree-tempAvg').innerHTML = jsonFile.city.weather.DayThree.tempAvg;
+        document.getElementById('city-weather-DayThree-windMax').innerHTML = jsonFile.city.weather.DayThree.windMax;
 
-            // INFO
-            $('#cityName').text(data['city']['name'] + ", " + data['countryName']);
-            $('#cityInfo').text("Population: " + data['city']['population']);
-            $("#cityFlag").attr("src", data['flagImgUri']);
+        //dataDiv = document.getElementById('titel');
+        //dataDiv.innerHTML = jsonFile.city.name;
 
-            // CURRENCY
-            $('#cityCurrency').text("Currency: " + data['currencyCodes']);
+    }
+}
 
-            // WEATHER
+function getCity() {
+    console.log("Get city...");
+    cityName = $("#input").val();
+    xhr = getXmlHttpRequestObject();
+    xhr.onreadystatechange = dataCallback;
+    // asynchronous requests
+    xhr.open("GET", "http://localhost:6969/" + cityName, true);
+    // Send the request over the network
+    xhr.send(null);
+}
 
-            // day 1
-            $('#chanceOfRain1').text("Chance of rain: " + data['city']['weather']['DayOne']['chanceOfRain'] + " %.");
-            $("#icon1").attr("src", data['city']['weather']['DayOne']['icon']);
-            $('#tempAvg1').text("Avg temp: " + data['city']['weather']['DayOne']['tempAvg'] + " C.");
-            $('#windMax1').text("Wind max: " + data['city']['weather']['DayOne']['windMax'] + " kph.");
-
-            // day 2
-            $('#chanceOfRain2').text("Chance of rain: " + data['city']['weather']['DayTwo']['chanceOfRain'] + " %.");
-            $("#icon2").attr("src", data['city']['weather']['DayTwo']['icon']);
-            $('#tempAvg2').text("Avg temp: " + data['city']['weather']['DayTwo']['tempAvg'] + " C.");
-            $('#windMax2').text("Wind max: " + data['city']['weather']['DayTwo']['windMax'] + " kph.");
-
-            // day 3
-            $('#chanceOfRain3').text("Chance of rain: " + data['city']['weather']['DayThree']['chanceOfRain'] + " %.");
-            $("#icon3").attr("src", data['city']['weather']['DayThree']['icon']);
-            $('#tempAvg3').text("Avg temp: " + data['city']['weather']['DayThree']['tempAvg'] + " C.");
-            $('#windMax3').text("Wind max: " + data['city']['weather']['DayThree']['windMax'] + " kph.");
-
-            // Lastly, reset the input field.
-            $("#input").val(""); 
-        });
-    });
-
-
-    /*
-    $.ajax({
-        url: 'http://localhost:5000',
-        headers: {"Accept": "application/json"}
-    })
-    .done(function (result) { 
-    });
-    */
-
-
-});
+function getDate() {
+    date = new Date().toString();
+    document.getElementById('dateTime').textContent
+        = date;
+}
+(function () {
+    getDate();
+})();

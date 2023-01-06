@@ -6,6 +6,8 @@
 import time, json, string
 
 from flask import Flask, jsonify, request, url_for, render_template
+from flask_cors import CORS
+
 
 from APIer.geodb import get_cityDetails
 from APIer.geodb import get_cityTime
@@ -20,6 +22,11 @@ from APIer.currencyConverter import get_rate
 
 # Det som står efter __name__ är för att customiza sökvägen till filerna templates (html) samt static (css, js och bilder) för frontend.
 # app = Flask(__name__, template_folder='../FrontEnd/templates', static_folder='../FrontEnd/static') 
+
+#Startar servern direkt när man trycker "play". Servern kör på port 6969.
+#eller när man skriver:
+#    python Backend\main.py
+
 # setup(): Nödvändiga saker som ska göras när servern startar.
 
 app = Flask(__name__)
@@ -30,13 +37,15 @@ CORS(app)
 #def list_cities(input): 
 #       return "The input was: " + str(input) #Begäran vill ha svar i HTML
 
+
+'''
 # ****************************
 # Route /
 # ****************************
 @app.route("/")
 def main():
     return render_template('info.html')
-'''
+
 @app.route("/index.html")
 def index():
     return render_template('index.html')
@@ -66,7 +75,7 @@ def searchCity(cityname):
         currencyto = json.dumps(currencyto, indent=None)
         currencyto = currencyto.replace('[', '').replace(']', '').replace('"','')
         euroconversion = get_rate("EUR", currencyto, 10)
-
+        
         weatherDayOne = {}
         weatherDayOne['tempAvg'] = cityWeather['forecast']['forecastday'][0]['day']['avgtemp_c']
         weatherDayOne['windMax'] = cityWeather['forecast']['forecastday'][0]['day']['maxwind_kph']
@@ -105,7 +114,7 @@ def searchCity(cityname):
         jsondata['capital'] = countryInfo['data']['capital']
         jsondata['callingCode'] = countryInfo['data']['callingCode']
         jsondata['currencyCodes'] = countryInfo['data']['currencyCodes']
-        jsondata['tenEuroConversion'] = euroconversion
+        jsondata['tenEuroConversion'] = 10
         jsondata['numRegions'] = countryInfo['data']['numRegions']
         jsondata['city'] = city      
 
@@ -131,4 +140,14 @@ def test(test):
 if __name__ == "__main__":
     app.run("localhost", 6969)    
 
-#app.run(debug=True)
+#Route för att lista ett visst antal av de största städerna i ett land.
+#Returnerar en JSON fil med städer i sjunkande storleksordning.
+@app.route('/<string:countryName>/<int:nbrResults>', methods=['GET'])
+def citiesInCountry(countryName):
+    print("Hello")
+
+
+if __name__ == "__main__":
+    app.run("localhost", 6969)    
+
+#app.run(debug=True)£
