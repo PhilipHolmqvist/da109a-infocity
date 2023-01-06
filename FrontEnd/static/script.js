@@ -2,46 +2,73 @@
 // Js för att presentera json i frontend
 // **************************************
 
-var cityName = ""
+var xhr = null;
+getXmlHttpRequestObject = function () {
+        if (!xhr) {
+            // Create a new XMLHttpRequest object 
+            xhr = new XMLHttpRequest();
+        }
+        return xhr;
+    };
 
-$(document).ready(function () {
+function dataCallback() {
+    // Check response is ready or not
+    if (xhr.readyState == 4 && xhr.status == 200) {
+        console.log("Data received!");
+        //getDate();
 
-    $("#search").click(function () {
+        var jsonFile = JSON.parse(xhr.responseText);
+        
+        document.getElementById('callingCode').innerHTML = "Landskod: " + jsonFile.callingCode;
+        document.getElementById('capital').innerHTML = "Huvudstad: " + jsonFile.capital;
+        document.getElementById('countryName').innerHTML = jsonFile.countryName;
+        document.getElementById('currencyCodes').innerHTML = "Valuta: " + jsonFile.currencyCodes;
+        document.getElementById('flagImgUri').src = jsonFile.flagImgUri;
+        document.getElementById('numRegions').innerHTML = "Antal regioner: " + jsonFile.numRegions;
+        document.getElementById('tenEuroConversion').innerHTML = "Eur to sek: " + jsonFile.tenEuroConversion;
 
-        cityName = $("#input").val();
+        document.getElementById('city-elevationMeters').innerHTML = "M.Ö.H: " + jsonFile.city.elevationMeters;
+        document.getElementById('city-name').innerHTML = jsonFile.city.name;
+        document.getElementById('city-population').innerHTML = "Invånare: " + jsonFile.city.population;
+        document.getElementById('city-region').innerHTML = jsonFile.city.region;
 
-        $.ajax({
-            url: 'http://localhost:5000/' + cityName, // Vi refererar till vår sida.
-            headers: {"Accept": "application/json"}   // Vi vill ha tillbaka json.
-          })
-          .done(function (data) { // Här ska vi behandla data.
+        document.getElementById('city-weather-DayOne-chanceOfRain').innerHTML = "Regn Risk: " + jsonFile.city.weather.DayOne.chanceOfRain;
+        document.getElementById('city-weather-DayOne-icon').src = jsonFile.city.weather.DayOne.icon;
+        document.getElementById('city-weather-DayOne-tempAvg').innerHTML = "Temp: " + jsonFile.city.weather.DayOne.tempAvg;
+        document.getElementById('city-weather-DayOne-windMax').innerHTML = "Vind: " + jsonFile.city.weather.DayOne.windMax;
+        
+        document.getElementById('city-weather-DayTwo-chanceOfRain').innerHTML = "Regn Risk: " + jsonFile.city.weather.DayTwo.chanceOfRain;
+        document.getElementById('city-weather-DayTwo-icon').src = jsonFile.city.weather.DayTwo.icon;
+        document.getElementById('city-weather-DayTwo-tempAvg').innerHTML = "Temp: " + jsonFile.city.weather.DayTwo.tempAvg;
+        document.getElementById('city-weather-DayTwo-windMax').innerHTML = "Vind: " + jsonFile.city.weather.DayTwo.windMax;
 
-            // Get response and present on the html using jquery.
+        document.getElementById('city-weather-DayThree-chanceOfRain').innerHTML = "Regn Risk: " + jsonFile.city.weather.DayThree.chanceOfRain;
+        document.getElementById('city-weather-DayThree-icon').src = jsonFile.city.weather.DayThree.icon;
+        document.getElementById('city-weather-DayThree-tempAvg').innerHTML = "Temp: " + jsonFile.city.weather.DayThree.tempAvg;
+        document.getElementById('city-weather-DayThree-windMax').innerHTML = "Vind: " + jsonFile.city.weather.DayThree.windMax;
 
-            // INFO
-            $('#cityName').text(data['city']['name'] + ", " + data['countryName']);
-            $('#cityInfo').text("Population: " + data['city']['population']);
-            $("#cityFlag").attr("src", data['flagImgUri']);
+        //dataDiv = document.getElementById('titel');
+        //dataDiv.innerHTML = jsonFile.city.name;
 
-            // CURRENCY
-            $('#cityCurrency').text("Currency: " + data['currencyCodes']);
+    }
+}
 
-            // WEATHER
-            $('#cityWeather').text("Avg temp: " + data['city']['weather']['DayOne']['tempAvg'] + " C.");
+function getCity() {
+    console.log("Get city...");
+    cityName = $("#input").val();
+    xhr = getXmlHttpRequestObject();
+    xhr.onreadystatechange = dataCallback;
+    // asynchronous requests
+    xhr.open("GET", "http://localhost:6969/" + cityName, true);
+    // Send the request over the network
+    xhr.send(null);
+}
 
-            
-            // Lastly, reset the input field.
-            $("#input").val(""); 
-        });
-    });
-
-
-    $.ajax({
-        url: 'http://localhost:5000',
-        headers: {"Accept": "application/json"}
-    })
-    .done(function (result) { 
-    });
-
-
-});
+function getDate() {
+    date = new Date().toString();
+    document.getElementById('dateTime').textContent
+        = date;
+}
+(function () {
+    getDate();
+})();
