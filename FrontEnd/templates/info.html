@@ -7,37 +7,343 @@
 
     <link rel="stylesheet" href="../static/style.css">
     <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
     <script type="text/javascript" src="../static/script.js"></script>
 
 </head>
 
 <body>
-    
+
     <nav class="nav">
         <div class="name">
             <a href="index.html"><img src="/static/icons/infocity-icon_v2_221227.png" width="50px"></a>
         </div>
         <div class="bar">
-            <!-- Använd ej form eftersom sidan uppdateras automatisk vilket gör att sidan inte hinner visa json data. -->
-            <input type="search" id="input" placeholder="Sök">
-            <button type="submit" id="search">Sök</button>
+            <form action="/cityname" name="cityNameForm" id="cityNameForm">
+                <input list="listTopCities" type="search" id="input" placeholder="cityname">
+                <datalist id="listTopCities">
+                    <option value="abidjan">
+                    <option value="accra">
+                    <option value="adana">
+                    <option value="addis ababa">
+                    <option value="adelaide">
+                    <option value="agra">
+                    <option value="ahmadabad">
+                    <option value="aleppo(halab)">
+                    <option value="alexandria">
+                    <option value="algiers">
+                    <option value="allahabad">
+                    <option value="almaty">
+                    <option value="amman">
+                    <option value="amritsar">
+                    <option value="ankara">
+                    <option value="anshan">
+                    <option value="baghdad">
+                    <option value="baku">
+                    <option value="bandung">
+                    <option value="bangalore">
+                    <option value="bangkok">
+                    <option value="baotou">
+                    <option value="barcelona">
+                    <option value="barquisimeto">
+                    <option value="barranquilla">
+                    <option value="basrah">
+                    <option value="beijing">
+                    <option value="beirut">
+                    <option value="belem">
+                    <option value="belgrade">
+                    <option value="belo horizonte">
+                    <option value="benghazi">
+                    <option value="benin">
+                    <option value="berlin">
+                    <option value="bhopal">
+                    <option value="birmingham">
+                    <option value="bogota">
+                    <option value="brasilia">
+                    <option value="brazzaville">
+                    <option value="brisbane">
+                    <option value="bucharest">
+                    <option value="budapest">
+                    <option value="buenos aires">
+                    <option value="bursa">
+                    <option value="busan">
+                    <option value="cairo">
+                    <option value="cali">
+                    <option value="campinas">
+                    <option value="capetown">
+                    <option value="caracas">
+                    <option value="casablanca">
+                    <option value="changchun">
+                    <option value="changsha">
+                    <option value="changzhou">
+                    <option value="chelyabinsk">
+                    <option value="chengdu">
+                    <option value="chennai">
+                    <option value="chicago">
+                    <option value="chittagong">
+                    <option value="chongquin">
+                    <option value="ciudad juarez">
+                    <option value="conakry">
+                    <option value="copenhagen">
+                    <option value="cordoba">
+                    <option value="curitiba">
+                    <option value="daegu">
+                    <option value="daejon">
+                    <option value="dakar">
+                    <option value="dalian">
+                    <option value="dallas">
+                    <option value="damascus">
+                    <option value="dar es salaam">
+                    <option value="datong">
+                    <option value="delhi">
+                    <option value="dhaka">
+                    <option value="dnipropetrovsk">
+                    <option value="donetsk">
+                    <option value="douala">
+                    <option value="durban">
+                    <option value="ecatepec">
+                    <option value="ekaterinburg">
+                    <option value="faisalabad">
+                    <option value="fortaleza">
+                    <option value="foshan">
+                    <option value="freetown">
+                    <option value="fukuoka">
+                    <option value="fuzhou">
+                    <option value="giza">
+                    <option value="goiania">
+                    <option value="guadalajara">
+                    <option value="guangzhou">
+                    <option value="guarulhos">
+                    <option value="guatamala city">
+                    <option value="guayaquil">
+                    <option value="guiyang">
+                    <option value="gujranwala">
+                    <option value="gwangju">
+                    <option value="haiphong">
+                    <option value="hamburg">
+                    <option value="handan">
+                    <option value="hangzhou">
+                    <option value="hanoi">
+                    <option value="haora">
+                    <option value="harare">
+                    <option value="harbin">
+                    <option value="havana">
+                    <option value="hefei">
+                    <option value="hiroshima">
+                    <option value="ho chi minh city">
+                    <option value="hong kong">
+                    <option value="houston">
+                    <option value="hyderabad">
+                    <option value="hyderabad">
+                    <option value="ibadan">
+                    <option value="incheon">
+                    <option value="indore">
+                    <option value="irbil">
+                    <option value="isfahen">
+                    <option value="istanbul">
+                    <option value="izmir">
+                    <option value="jaipur">
+                    <option value="jakarta">
+                    <option value="jeddah">
+                    <option value="jilin">
+                    <option value="jinan">
+                    <option value="jodphur">
+                    <option value="johannesburg">
+                    <option value="kabul">
+                    <option value="kaduna">
+                    <option value="kano">
+                    <option value="kanpur">
+                    <option value="kaohsiung">
+                    <option value="karachi">
+                    <option value="kawasaki">
+                    <option value="kazan">
+                    <option value="kharkiv">
+                    <option value="khartoum">
+                    <option value="khulna">
+                    <option value="kiev">
+                    <option value="kinshasa">
+                    <option value="kitakyushu">
+                    <option value="kobe">
+                    <option value="kolkata">
+                    <option value="kowloon">
+                    <option value="kuala lumpur">
+                    <option value="kunming">
+                    <option value="kyoto">
+                    <option value="la paz">
+                    <option value="lagos">
+                    <option value="lahore">
+                    <option value="lanzhou">
+                    <option value="leon">
+                    <option value="lima">
+                    <option value="london">
+                    <option value="los angeles">
+                    <option value="luanda">
+                    <option value="lubumbashi">
+                    <option value="lucknow">
+                    <option value="ludhiana">
+                    <option value="luoyang">
+                    <option value="lusaka">
+                    <option value="madrid">
+                    <option value="maiduguri">
+                    <option value="makassar">
+                    <option value="managua">
+                    <option value="manaus">
+                    <option value="manila">
+                    <option value="maputo">
+                    <option value="maracaibo">
+                    <option value="mashhad">
+                    <option value="mecca">
+                    <option value="medan">
+                    <option value="medellin">
+                    <option value="medina">
+                    <option value="meerut">
+                    <option value="melbourne">
+                    <option value="mexicali">
+                    <option value="mexico city">
+                    <option value="milan">
+                    <option value="minsk">
+                    <option value="mogadishu">
+                    <option value="monterrey">
+                    <option value="montevideo">
+                    <option value="montreal">
+                    <option value="moscow">
+                    <option value="mosul">
+                    <option value="multan">
+                    <option value="mumbai (bombay)">
+                    <option value="munich">
+                    <option value="nagoya">
+                    <option value="nagpur">
+                    <option value="nairobi">
+                    <option value="nanchang">
+                    <option value="nanjing">
+                    <option value="nanning">
+                    <option value="napoli">
+                    <option value="nashik">
+                    <option value="new york city">
+                    <option value="nezahualcoyotl">
+                    <option value="nizhny novgorod">
+                    <option value="novosibirsk">
+                    <option value="odessa">
+                    <option value="omdurman">
+                    <option value="omsk">
+                    <option value="osaka">
+                    <option value="palembang">
+                    <option value="paris">
+                    <option value="patna">
+                    <option value="perm">
+                    <option value="perth">
+                    <option value="peshawar">
+                    <option value="philadelphia">
+                    <option value="phnom penh">
+                    <option value="phoenix">
+                    <option value="pimpri chinchwad">
+                    <option value="port harcourt">
+                    <option value="port-au-prince">
+                    <option value="porto alegre">
+                    <option value="prague">
+                    <option value="puebla">
+                    <option value="pune">
+                    <option value="pyongyang">
+                    <option value="qingdao">
+                    <option value="qiqihar">
+                    <option value="quito">
+                    <option value="rabat">
+                    <option value="rajkot">
+                    <option value="ranchi">
+                    <option value="rawalpindi">
+                    <option value="recife">
+                    <option value="rio de janeiro">
+                    <option value="riyadh">
+                    <option value="rome">
+                    <option value="rosario">
+                    <option value="rostov on don">
+                    <option value="salvador">
+                    <option value="samara">
+                    <option value="san antonio">
+                    <option value="san diego">
+                    <option value="sanaa">
+                    <option value="santa cruz">
+                    <option value="santiago">
+                    <option value="santo domingo">
+                    <option value="sao paulo">
+                    <option value="sapporo">
+                    <option value="semarang">
+                    <option value="sendai">
+                    <option value="seongnam">
+                    <option value="seoul">
+                    <option value="shanghai">
+                    <option value="shenyang">
+                    <option value="shenzhen">
+                    <option value="shiraz">
+                    <option value="shiziahuang">
+                    <option value="shubra el kheima">
+                    <option value="singapore">
+                    <option value="sofia">
+                    <option value="soweto">
+                    <option value="st petersburg">
+                    <option value="stockholm">
+                    <option value="surabaya">
+                    <option value="surat">
+                    <option value="suzhou">
+                    <option value="sydney">
+                    <option value="tabriz">
+                    <option value="taichung">
+                    <option value="taipei">
+                    <option value="taiyuan">
+                    <option value="tangshan">
+                    <option value="tashkent">
+                    <option value="tbilisi">
+                    <option value="tegucigalpa">
+                    <option value="tehran">
+                    <option value="tianjin">
+                    <option value="tijuana">
+                    <option value="tokyo">
+                    <option value="toronto">
+                    <option value="tripoli">
+                    <option value="tshwane (pretoria)">
+                    <option value="tunis">
+                    <option value="ufa">
+                    <option value="ulsan">
+                    <option value="urumqi">
+                    <option value="vadodara">
+                    <option value="valencia">
+                    <option value="varanasi">
+                    <option value="vienna">
+                    <option value="volgograd">
+                    <option value="warsaw">
+                    <option value="wuhan">
+                    <option value="wuxi">
+                    <option value="xian">
+                    <option value="xuzhou">
+                    <option value="yangon">
+                    <option value="yaounde">
+                    <option value="yerevan">
+                    <option value="yokohama">
+                    <option value="zapopan">
+                    <option value="zhengzhou">
+                    <option value="zibo">
+                </datalist>
+                <button type="button" id="searchCity">Search</button>
+            </form>
         </div>
-        
+
+
     </nav>
-    <div id="background"> 
+
+    <div id="background">
         <div id="info">
-            <p class="titel">Info</p>
+            <p class="titel">Information</p>
             <p id="cityName"></p>
             <p id="cityInfo"></p>
             <img id="cityFlag" src="" alt="">
         </div>
         <div id="currency">
-            <p class="titel">Valuta</p>
+            <p class="titel">Currency</p>
             <p id="cityCurrency"></p>
             <div class="wrapper">
                 <header>Currency Converter</header>
@@ -53,7 +359,7 @@
                                 <select></select>
                             </div>
                         </div>
-                        
+
                         <div class="icon"><i class="fa-solid fa-right-left"></i></div>
                         <div class="to">
                             <p>To</p>
@@ -67,15 +373,46 @@
                 </form>
             </div>
         </div>
+
         <div id="weather">
-            <p class="titel">Väder</p>
-            <p id="cityWeather"></p>
+
+            <h3 class="titel">Weather</h3>
+
+            <div class="grid-container-weather">
+                <div class="grid-item-weather">
+                    <h4>Day 1</h4>
+                    <p id="chanceOfRain1"></p>
+                    <img id="icon1" src="" alt="">
+                    <p id="tempAvg1"></p>
+                    <p id="windMax1"></p>
+                </div>
+
+                <div class="grid-item-weather">
+                    <h4>Day 2</h4>
+                    <p id="chanceOfRain2"></p>
+                    <img id="icon2" src="" alt="">
+                    <p id="tempAvg2"></p>
+                    <p id="windMax2"></p>
+                </div>
+
+                <div class="grid-item-weather">
+                    <h4>Day 3</h4>
+                    <p id="chanceOfRain3"></p>
+                    <img id="icon3" src="" alt="">
+                    <p id="tempAvg3"></p>
+                    <p id="windMax3"></p>
+                </div>
+            </div>
         </div>
+
     </div>
-<!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-<script type="text/javascript" src="../static/countrylist.js"></script>
-<script type="text/javascript" src="../static/currencyscript.js"></script>
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../static/countrylist.js"></script>
+    <script type="text/javascript" src="../static/currencyscript.js"></script>
 </body>
 
 </html>
