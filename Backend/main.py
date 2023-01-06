@@ -62,7 +62,7 @@ def info():
 def searchCity(cityname):
 
     
-    if request.headers.get("Accept") == "application/json": 
+    if request.method == 'GET' and cityname != "favicon.ico":
 
         print("Cityname: " + cityname)
 
@@ -125,8 +125,8 @@ def searchCity(cityname):
 
         return (jsondata)
     else:
-        print("Else!")
-        return "Else!"
+        print("Fatal error 505: favicon not found.")
+        return("Infocity error")
 
 
 # ****************************
