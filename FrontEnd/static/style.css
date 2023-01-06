@@ -77,6 +77,19 @@ body {
     min-height: 100vh;
 }
 
+#first_info > h1{
+    text-align: center;
+    text-decoration: underline;
+}
+
+#first_info > h4{
+    text-align: center;
+}
+
+#first_info > h3{
+    text-align: center;
+}
+
 #cityFlag {
     width: 100px;
 }
@@ -106,6 +119,8 @@ body {
 body{
     background-image: url(/static/img/823-8236593_singapore-city-transparent.png);
     background-color: grey;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 #first_site{
@@ -116,10 +131,10 @@ body{
 }
 
 #icon_link{
-    text-align: center;
-    width: 90px;
-    height: 90px;
-    margin-left: 45%;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    padding-top: 5px;
 }
 
 body > .grid{
@@ -127,6 +142,7 @@ body > .grid{
     grid-template-areas: 
     'header'
     'section'
+    'footer'
     ;
 }
 
@@ -161,32 +177,24 @@ section{
     padding-right: 20px;
     width: 60%;
     background-color: rgb(155, 155, 155);
-    border-bottom-right-radius: 20px;
-    border-bottom-left-radius: 20px;
     padding-bottom: 10px;
 }
 
-#search > h1{
-    margin: 0%;
-    margin-bottom: 10px;
+footer{
+   grid-area: footer;
+   display: flex;
+   justify-content: center;
 }
 
-#search-bar{
-    flex: 1;
-    border: none;
-    outline: none;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-}
-
-#search-button{
-    padding: 20px;
-    border: none;
-    outline: none;
-    letter-spacing: 1px;
-    cursor: pointer;
-    border-top-right-radius: 20px;
+footer > h4{
+    width: 60%;
+    background-color: darkgray;
     border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    margin-top: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
 }
 
 #info{
