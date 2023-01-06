@@ -41,6 +41,7 @@ a {
     text-align: center;
 }
 
+
 #input {
     border-radius: 20px;
 }
@@ -59,7 +60,7 @@ a {
 }
 
 body {
-    background-image: url(/static/img/823-8236593_singapore-city-transparent.png);
+    background-image: url(/img/823-8236593_singapore-city-transparent.png);
 }
 
 #background {
@@ -78,6 +79,10 @@ body {
 }
 
 #cityFlag {
+    width: 100px;
+}
+
+#flagImgUri{
     width: 100px;
 }
 
@@ -102,6 +107,7 @@ body {
 .titel {
     font-size: 35px;
 }
+
 
 body{
     background-image: url(/static/img/823-8236593_singapore-city-transparent.png);
@@ -187,6 +193,7 @@ section{
     margin-top: 10px;
     text-align: center;
     padding-bottom: 10px;
+
 }
 
 #info >h3{
@@ -196,6 +203,7 @@ section{
 #info > p{
     display: flex;
 }
+
 
 
 

@@ -22,18 +22,18 @@ function dataCallback() {
 
         var jsonFile = JSON.parse(xhr.responseText);
         
-        document.getElementById('callingCode').innerHTML = jsonFile.callingCode;
-        document.getElementById('capital').innerHTML = jsonFile.capital;
+        document.getElementById('callingCode').innerHTML = "Landskod: " + jsonFile.callingCode;
+        document.getElementById('capital').innerHTML = "Huvudstad: " + jsonFile.capital;
         document.getElementById('countryName').innerHTML = jsonFile.countryName;
-        document.getElementById('currencyCodes').innerHTML = jsonFile.currencyCodes;
-        document.getElementById('flagImgUri').innerHTML = jsonFile.flagImgUri;
-        document.getElementById('numRegions').innerHTML = jsonFile.numRegions;
+        document.getElementById('currencyCodes').innerHTML = "Valuta: " + jsonFile.currencyCodes;
+        document.getElementById('flagImgUri').src = jsonFile.flagImgUri;
+        document.getElementById('numRegions').innerHTML = "Antal regioner: " + jsonFile.numRegions;
         document.getElementById('tenEuroConversion').innerHTML = jsonFile.tenEuroConversion;
         document.getElementById('wikidataID').innerHTML = jsonFile.wikidataID;
 
-        document.getElementById('city-elevationMeters').innerHTML = jsonFile.city.elevationMeters;
+        document.getElementById('city-elevationMeters').innerHTML = "M.Ö.H: " + jsonFile.city.elevationMeters;
         document.getElementById('city-name').innerHTML = jsonFile.city.name;
-        document.getElementById('city-population').innerHTML = jsonFile.city.population;
+        document.getElementById('city-population').innerHTML = "Invånare: " + jsonFile.city.population;
         document.getElementById('city-region').innerHTML = jsonFile.city.region;
         document.getElementById('city-wikidataID').innerHTML = jsonFile.city.wikidataID;
 
