@@ -203,7 +203,11 @@ section{
     display: flex;
 }
 
-
+#head_img{
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
 
 .wrapper{
     width: 350px;
