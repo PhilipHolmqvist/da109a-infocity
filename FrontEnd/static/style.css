@@ -255,7 +255,7 @@ footer > h4{
     margin-left: auto;
 }
 
-
+/*CURRENCY EXCHANGE*/
 .wrapper{
     width: 350px;
     padding-top: 5px;
@@ -263,8 +263,6 @@ footer > h4{
     padding-left: 15px;
     padding-right: 15px;
     border-radius: 7px;
-    background: #fff;
-
 }
 
 .wrapper header {
@@ -316,6 +314,7 @@ form .drop-list {
     border-radius: 5px;
     justify-content: center;
     border: 1px solid #999;
+    background-color: white;
 }
 
 .select-box img {

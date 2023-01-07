@@ -6,7 +6,9 @@ getButton = document.querySelector("form button");
 var previousCurrencyFrom = document.getElementById('currencyfrom');
 var previousCurrencyTo = document.getElementById('currencyto');
 var currentrate = 0.0931;
-
+var stringresult = "";
+var amount = 0;
+var result = 0;
 
 for (let i = 0; i < dropList.length; i++) {
     for(let currency_code in country_list){
@@ -29,11 +31,6 @@ exchangeIcon.addEventListener("click", ()=>{
 });
 
 //Sköter valuta omvandlaren
-/*
-@todo
-- Hämta rate från JSON objektet som kommer
-- Kalla på APIn på egen hand om någon av valutorna skulle ändras 
-*/
 function convert(){
     //initierar callAPI-bool för kontroll om apin ska kallas eller inte
     var callAPI = false;
@@ -55,10 +52,9 @@ function convert(){
     //Om apin inte behöver kallas görs bara en uträkning baserat på senaste ratesen.
     if(!callAPI){
         alert("Didn't call API")
-        var amount = document.getElementById('amount').value;
-        var rate = 0.0931;
-        var result = (amount * rate);
-        var stringresult = amount + " " + fromCurrency.value + " = " + result + " " + toCurrency.value;
+        amount = document.getElementById('amount').value;
+        result = (amount * currentrate);
+        stringresult = amount + " " + currFrom + " = " + result + " " + currTo;
         document.querySelector('.exchange-rate').innerHTML = stringresult;
     }
 
@@ -67,6 +63,14 @@ function convert(){
     */
     if(callAPI){
         alert("Called API")
+        /*
+        @todo
+        call api with currTo, CurrFrom & amount
+        */
+        currentrate = 1.0000; //get new rate from response
+        result = 0; // get result from the api call
+        stringresult = stringresult = amount + " " + currFrom + " = " + result + " " + currTo;
+
         //kallar på APIn
     }
 }
