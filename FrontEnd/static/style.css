@@ -28,7 +28,7 @@ nav.navbar {
     grid-template-columns: 3fr 1fr;
     text-decoration: none;
     padding-left: 15px;
-    width: 78%;
+    width: 100%;
 }
 
 a {
@@ -96,14 +96,9 @@ a {
     border-radius: 5px;
 }
 
-
 #infocityLogo {
     background-color: rgb(32, 32, 32);
     border: #fff;
-}
-
-#search:hover {
-    transform: scale(1.1);
 }
 
 #search-button-info:hover {

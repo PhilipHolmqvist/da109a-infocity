@@ -18,7 +18,7 @@ function dataCallback() {
         //getDate();
 
         var jsonFile = JSON.parse(xhr.responseText);
-        
+
         document.getElementById('callingCode').innerHTML = "Landskod: " + jsonFile.callingCode;
         document.getElementById('capital').innerHTML = "Huvudstad: " + jsonFile.capital;
         document.getElementById('countryName').innerHTML = jsonFile.countryName;
@@ -88,8 +88,6 @@ $(document).ready(function () {
     //   e.preventDefault();
     //});
 });
-
-
 
 function getDate() {
     date = new Date().toString();
