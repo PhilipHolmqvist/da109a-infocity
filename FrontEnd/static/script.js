@@ -121,6 +121,11 @@ $(document).ready(function () {
     //document.getElementById('input').addEventListener('keypress', (e) => {
     //   e.preventDefault();
     //});
+
+    //document.addEventListener('click', () => document.querySelector('.inputT').placeholder = '');
+    //document.querySelector('.inputT').placeholder = 'e.g. malmö';
+    //element.addEventListener('click', () => document.querySelector('.final-score').textContent = 'Final Score');
+    $('#input').attr('placeholder','e.g. malmö');
 });
 
 function getDate() {

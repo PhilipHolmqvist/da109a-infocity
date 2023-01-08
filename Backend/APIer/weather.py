@@ -18,7 +18,7 @@ def get_cityWeather(countryName):
     headers = {
         # The api key.
         "X-RapidAPI-Key": "0ab490636dmsh7da5c2757e98131p159b59jsn6b2e12133ae3",
-        "X-RapidAPI-Host": "weatherapi-com.p.rapidapi.com"
+        "X-RapidAPI-Host": "weatherapi-com.p.rapidapi.com",
     }
 
     response = requests.request(
@@ -34,8 +34,10 @@ def get_cityWeather(countryName):
     data = json.loads(response.text)
 
     '''
-    if(data['error']['message'] == "No matching location found."):
-        print("Exception is solved!")
+    if(response.headers.cdn-status == "200"):
+        print("Success!")
+    else:
+        print("Error!")
     '''
     
     return data
