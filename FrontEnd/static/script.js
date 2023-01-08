@@ -4,6 +4,8 @@
 var currentrate = 0;
 var originalcurrency = "SEK";
 
+let map;
+
 var xhr = null;
 getXmlHttpRequestObject = function () {
     if (!xhr) {
@@ -48,16 +50,39 @@ function dataCallback() {
         document.getElementById('city-weather-DayThree-icon').src = jsonFile.city.weather.DayThree.icon;
         document.getElementById('city-weather-DayThree-tempAvg').innerHTML = "Avg temp: " + jsonFile.city.weather.DayThree.tempAvg;
         document.getElementById('city-weather-DayThree-windMax').innerHTML = "Wind: " + jsonFile.city.weather.DayThree.windMax;
+        
+        //Get long and lat and insert to google map.
+        
+        window.initMap = new google.maps.Map(document.getElementById("map"), {center: { lat: parseFloat(jsonFile.city.latitude), lng: parseFloat(jsonFile.city.longitud) },zoom: 8});
 
-        $("#input").val(''); // reset the text field at the end.
-        $('#loadWait').hide();
+        $('#map').show();
+        resetPageForNewSearch();
         
         originalcurrency = jsonFile.currencyCodes;
         currentrate = jsonFile.currentRate;
         //dataDiv = document.getElementById('titel');
         //dataDiv.innerHTML = jsonFile.city.name;
+    }else if(xhr.readyState == 4 && xhr.status == 500){
+        console.log("500 error, could not find city you searched for..")
+        document.getElementById('city-name').innerHTML = "City not found!"
+        document.getElementById('countryName').innerHTML = "Check the spelling of the input.."
+        $('#map').hide();
+        resetPageForNewSearch();
+
+    }else if(xhr.readyState == 4 && xhr.status == 404){
+        console.log("404 error, could not find city..")
+        document.getElementById('city-name').innerHTML = "City not found!"
+        document.getElementById('countryName').innerHTML = "Input field was empty.."
+        $('#map').hide();
+        resetPageForNewSearch();
     }
 }
+
+function resetPageForNewSearch(){
+    $("#input").val('');
+    $('#loadWait').hide();
+}
+
 
 function getCity() {
     $('#loadWait').show();
@@ -66,7 +91,7 @@ function getCity() {
     xhr = getXmlHttpRequestObject();
     xhr.onreadystatechange = dataCallback;
     // asynchronous requests
-    xhr.open("GET", "http://localhost:6969/" + cityName, true);
+    xhr.open("GET", "http://localhost:6969/city/" + cityName, true);
     // Send the request over the network
     xhr.send(null);
 }
@@ -83,6 +108,9 @@ function hideIntroShowResult() {
     resetContent();
     getCity();
 }
+
+
+
 
 function resetContent() {
     document.getElementById('callingCode').innerHTML = "";
@@ -117,6 +145,7 @@ function resetContent() {
 $(document).ready(function () {
     hideResultShowIntro();
     $('#loadWait').hide();
+    $('#map').hide();
     $("#listTopCities").css("line-height", "50");
     //document.getElementById('input').addEventListener('keypress', (e) => {
     //   e.preventDefault();

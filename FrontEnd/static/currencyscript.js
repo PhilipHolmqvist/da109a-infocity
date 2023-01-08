@@ -74,20 +74,21 @@ function convert(){
     }
 }
 
-var xhr = null;
+var xhr2 = null;
 getXmlHttpRequestObject = function () {
-        if (!xhr) {
+        if (!xhr2) {
             // Create a new XMLHttpRequest object 
-            xhr = new XMLHttpRequest();
+            xhr2 = new XMLHttpRequest();
         }
-        return xhr;
+        return xhr2;
 };
 
+//r: Cannot read properties of undefined (reading 'rate_for_amount') at XMLHttpRequest.dataCallback2
 
-function dataCallback() {
+function dataCallback2() {
     // Check response is ready or not
-    if (xhr.readyState == 4 && xhr.status == 200) {
-        var jsonFile = JSON.parse(xhr.responseText);
+    if (xhr2.readyState == 4 && xhr2.status == 200) {
+        var jsonFile = JSON.parse(xhr2.responseText);
         var result = jsonFile.rates.currencyto.rate_for_amount;
         currentrate = jsonFile.rates.currencyto.rate;
         stringresult = result + " " + currTo;
@@ -101,10 +102,11 @@ function getRate(){
     var currFrom = document.getElementById('currencyfrom').value;
     var currTo = document.getElementById('currencyto').value;
     var amount = document.getElementById('amount').value;
-    xhr = getXmlHttpRequestObject();
-    xhr.onreadystatechange = dataCallback;
-    xhr.open("GET", "http://localhost:6969/convert?from=" + currFrom + "&to=" + currTo + "&amount=" + amount, true);
-    xhr.send(null);
+    xhr2 = getXmlHttpRequestObject();
+    xhr2.onreadystatechange = dataCallback2;
+
+    xhr2.open("GET", "http://localhost:6969/convert?from=" + currFrom + "&to=" + currTo + "&amount=" + amount, true);
+    xhr2.send(null);
 }
 
 
