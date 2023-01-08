@@ -22,32 +22,32 @@ function dataCallback() {
         var jsonFile = JSON.parse(xhr.responseText);
 
         document.getElementById('callingCode').innerHTML = "Landskod: " + jsonFile.callingCode;
-        document.getElementById('capital').innerHTML = "Huvudstad: " + jsonFile.capital;
+        document.getElementById('capital').innerHTML = "Capital: " + jsonFile.capital;
         document.getElementById('countryName').innerHTML = jsonFile.countryName;
-        document.getElementById('currencyCodes').innerHTML = "Valuta: " + jsonFile.currencyCodes;
+        document.getElementById('currencyCodes').innerHTML = "Currency: " + jsonFile.currencyCodes;
         document.getElementById('flagImgUri').src = jsonFile.flagImgUri;
-        document.getElementById('numRegions').innerHTML = "Antal regioner: " + jsonFile.numRegions;
-        document.getElementById('tenEuroConversion').innerHTML = "Eur to sek: " + jsonFile.tenEuroConversion;
+        document.getElementById('numRegions').innerHTML = "Num of regions: " + jsonFile.numRegions;
+        document.getElementById('tenEuroConversion').innerHTML = "EUR to SEK: " + jsonFile.tenEuroConversion;
 
-        document.getElementById('city-elevationMeters').innerHTML = "M.Ö.H: " + jsonFile.city.elevationMeters;
+        document.getElementById('city-elevationMeters').innerHTML = "M.a.s.l: " + jsonFile.city.elevationMeters;
         document.getElementById('city-name').innerHTML = jsonFile.city.name;
-        document.getElementById('city-population').innerHTML = "Invånare: " + jsonFile.city.population;
+        document.getElementById('city-population').innerHTML = "Population: " + jsonFile.city.population;
         document.getElementById('city-region').innerHTML = jsonFile.city.region;
 
-        document.getElementById('city-weather-DayOne-chanceOfRain').innerHTML = "Regn Risk: " + jsonFile.city.weather.DayOne.chanceOfRain;
+        document.getElementById('city-weather-DayOne-chanceOfRain').innerHTML = "Rain chance: " + jsonFile.city.weather.DayOne.chanceOfRain;
         document.getElementById('city-weather-DayOne-icon').src = jsonFile.city.weather.DayOne.icon;
-        document.getElementById('city-weather-DayOne-tempAvg').innerHTML = "Temp: " + jsonFile.city.weather.DayOne.tempAvg;
-        document.getElementById('city-weather-DayOne-windMax').innerHTML = "Vind: " + jsonFile.city.weather.DayOne.windMax;
+        document.getElementById('city-weather-DayOne-tempAvg').innerHTML = "Avg temp: " + jsonFile.city.weather.DayOne.tempAvg;
+        document.getElementById('city-weather-DayOne-windMax').innerHTML = "Wind: " + jsonFile.city.weather.DayOne.windMax;
 
-        document.getElementById('city-weather-DayTwo-chanceOfRain').innerHTML = "Regn Risk: " + jsonFile.city.weather.DayTwo.chanceOfRain;
+        document.getElementById('city-weather-DayTwo-chanceOfRain').innerHTML = "Rain chance: " + jsonFile.city.weather.DayTwo.chanceOfRain;
         document.getElementById('city-weather-DayTwo-icon').src = jsonFile.city.weather.DayTwo.icon;
-        document.getElementById('city-weather-DayTwo-tempAvg').innerHTML = "Temp: " + jsonFile.city.weather.DayTwo.tempAvg;
-        document.getElementById('city-weather-DayTwo-windMax').innerHTML = "Vind: " + jsonFile.city.weather.DayTwo.windMax;
+        document.getElementById('city-weather-DayTwo-tempAvg').innerHTML = "Avg temp: " + jsonFile.city.weather.DayTwo.tempAvg;
+        document.getElementById('city-weather-DayTwo-windMax').innerHTML = "Wind: " + jsonFile.city.weather.DayTwo.windMax;
 
-        document.getElementById('city-weather-DayThree-chanceOfRain').innerHTML = "Regn Risk: " + jsonFile.city.weather.DayThree.chanceOfRain;
+        document.getElementById('city-weather-DayThree-chanceOfRain').innerHTML = "Rain chance: " + jsonFile.city.weather.DayThree.chanceOfRain;
         document.getElementById('city-weather-DayThree-icon').src = jsonFile.city.weather.DayThree.icon;
-        document.getElementById('city-weather-DayThree-tempAvg').innerHTML = "Temp: " + jsonFile.city.weather.DayThree.tempAvg;
-        document.getElementById('city-weather-DayThree-windMax').innerHTML = "Vind: " + jsonFile.city.weather.DayThree.windMax;
+        document.getElementById('city-weather-DayThree-tempAvg').innerHTML = "Avg temp: " + jsonFile.city.weather.DayThree.tempAvg;
+        document.getElementById('city-weather-DayThree-windMax').innerHTML = "Wind: " + jsonFile.city.weather.DayThree.windMax;
 
         $("#input").val(''); // reset the text field at the end.
         $('#loadWait').hide();
@@ -80,7 +80,38 @@ function hideResultShowIntro() {
 function hideIntroShowResult() {
     $("#intro-page").hide();
     $("#result-page").show();
+    resetContent();
     getCity();
+}
+
+function resetContent() {
+    document.getElementById('callingCode').innerHTML = "";
+    document.getElementById('capital').innerHTML = "";
+    document.getElementById('countryName').innerHTML = "";
+    document.getElementById('currencyCodes').innerHTML = "";
+    document.getElementById('flagImgUri').src = "";
+    document.getElementById('numRegions').innerHTML = "";
+    document.getElementById('tenEuroConversion').innerHTML = "";
+
+    document.getElementById('city-elevationMeters').innerHTML = "";
+    document.getElementById('city-name').innerHTML = "";
+    document.getElementById('city-population').innerHTML = "";
+    document.getElementById('city-region').innerHTML = "";
+
+    document.getElementById('city-weather-DayOne-chanceOfRain').innerHTML = "";
+    document.getElementById('city-weather-DayOne-icon').src = "";
+    document.getElementById('city-weather-DayOne-tempAvg').innerHTML = "";
+    document.getElementById('city-weather-DayOne-windMax').innerHTML = "";
+
+    document.getElementById('city-weather-DayTwo-chanceOfRain').innerHTML = "";
+    document.getElementById('city-weather-DayTwo-icon').src = "";
+    document.getElementById('city-weather-DayTwo-tempAvg').innerHTML = "";
+    document.getElementById('city-weather-DayTwo-windMax').innerHTML = "";
+
+    document.getElementById('city-weather-DayThree-chanceOfRain').innerHTML = "";
+    document.getElementById('city-weather-DayThree-icon').src = "";
+    document.getElementById('city-weather-DayThree-tempAvg').innerHTML = "";
+    document.getElementById('city-weather-DayThree-windMax').innerHTML = "";
 }
 
 $(document).ready(function () {
