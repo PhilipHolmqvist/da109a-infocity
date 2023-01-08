@@ -66,7 +66,7 @@ function getCity() {
     xhr = getXmlHttpRequestObject();
     xhr.onreadystatechange = dataCallback;
     // asynchronous requests
-    xhr.open("GET", "http://localhost:6969/" + cityName, true);
+    xhr.open("GET", "http://localhost:6969/city/" + cityName, true);
     // Send the request over the network
     xhr.send(null);
 }
