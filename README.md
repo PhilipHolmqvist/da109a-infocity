@@ -2,7 +2,7 @@
 
 <h2>Bästa API mashupen.</h2>
 
-![logo](https://github.com/PhilipHolmqvist/da109a-infocity/blob/main/FrontEnd/static/icons/infocity-icon_v2_221227.png)
+![logo](https://github.com/PhilipHolmqvist/da109a-infocity/blob/main/FrontEnd/static/icons/infocity-icon.png)
 
 <br><br>
 

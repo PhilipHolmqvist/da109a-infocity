@@ -24,10 +24,8 @@ body {
 nav.navbar {
     position: sticky;
     top: 0;
-    display: grid;
     grid-template-columns: 3fr 1fr;
     text-decoration: none;
-    padding-left: 15px;
     width: 100%;
 }
 
