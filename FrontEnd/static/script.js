@@ -49,15 +49,31 @@ function dataCallback() {
         document.getElementById('city-weather-DayThree-tempAvg').innerHTML = "Avg temp: " + jsonFile.city.weather.DayThree.tempAvg;
         document.getElementById('city-weather-DayThree-windMax').innerHTML = "Wind: " + jsonFile.city.weather.DayThree.windMax;
 
-        $("#input").val(''); // reset the text field at the end.
-        $('#loadWait').hide();
+        resetPageForNewSearch();
         
         originalcurrency = jsonFile.currencyCodes;
         currentrate = jsonFile.currentRate;
         //dataDiv = document.getElementById('titel');
         //dataDiv.innerHTML = jsonFile.city.name;
+    }else if(xhr.readyState == 4 && xhr.status == 500){
+        console.log("500 error, could not find city you searched for..")
+        document.getElementById('city-name').innerHTML = "City not found!"
+        document.getElementById('countryName').innerHTML = "Check the spelling of the input.."
+        resetPageForNewSearch();
+
+    }else if(xhr.readyState == 4 && xhr.status == 404){
+        console.log("404 error, could not find city..")
+        document.getElementById('city-name').innerHTML = "City not found!"
+        document.getElementById('countryName').innerHTML = "Input field was empty.."
+        resetPageForNewSearch();
     }
 }
+
+function resetPageForNewSearch(){
+    $("#input").val('');
+    $('#loadWait').hide();
+}
+
 
 function getCity() {
     $('#loadWait').show();
