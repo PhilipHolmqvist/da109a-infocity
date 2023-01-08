@@ -6,12 +6,12 @@ var originalcurrency = "SEK";
 
 var xhr = null;
 getXmlHttpRequestObject = function () {
-        if (!xhr) {
-            // Create a new XMLHttpRequest object 
-            xhr = new XMLHttpRequest();
-        }
-        return xhr;
-    };
+    if (!xhr) {
+        // Create a new XMLHttpRequest object 
+        xhr = new XMLHttpRequest();
+    }
+    return xhr;
+};
 
 function dataCallback() {
     // Check response is ready or not
@@ -20,7 +20,7 @@ function dataCallback() {
         //getDate();
 
         var jsonFile = JSON.parse(xhr.responseText);
-        
+
         document.getElementById('callingCode').innerHTML = "Landskod: " + jsonFile.callingCode;
         document.getElementById('capital').innerHTML = "Huvudstad: " + jsonFile.capital;
         document.getElementById('countryName').innerHTML = jsonFile.countryName;
@@ -38,7 +38,7 @@ function dataCallback() {
         document.getElementById('city-weather-DayOne-icon').src = jsonFile.city.weather.DayOne.icon;
         document.getElementById('city-weather-DayOne-tempAvg').innerHTML = "Temp: " + jsonFile.city.weather.DayOne.tempAvg;
         document.getElementById('city-weather-DayOne-windMax').innerHTML = "Vind: " + jsonFile.city.weather.DayOne.windMax;
-        
+
         document.getElementById('city-weather-DayTwo-chanceOfRain').innerHTML = "Regn Risk: " + jsonFile.city.weather.DayTwo.chanceOfRain;
         document.getElementById('city-weather-DayTwo-icon').src = jsonFile.city.weather.DayTwo.icon;
         document.getElementById('city-weather-DayTwo-tempAvg').innerHTML = "Temp: " + jsonFile.city.weather.DayTwo.tempAvg;
@@ -48,6 +48,9 @@ function dataCallback() {
         document.getElementById('city-weather-DayThree-icon').src = jsonFile.city.weather.DayThree.icon;
         document.getElementById('city-weather-DayThree-tempAvg').innerHTML = "Temp: " + jsonFile.city.weather.DayThree.tempAvg;
         document.getElementById('city-weather-DayThree-windMax').innerHTML = "Vind: " + jsonFile.city.weather.DayThree.windMax;
+
+        $("#input").val(''); // reset the text field at the end.
+        $('#loadWait').hide();
         
         originalcurrency = jsonFile.currencyCodes;
         currentrate = jsonFile.currentRate;
@@ -57,6 +60,7 @@ function dataCallback() {
 }
 
 function getCity() {
+    $('#loadWait').show();
     console.log("Get city...");
     cityName = $("#input").val();
     xhr = getXmlHttpRequestObject();
@@ -66,6 +70,27 @@ function getCity() {
     // Send the request over the network
     xhr.send(null);
 }
+
+function hideResultShowIntro() {
+    $("#result-page").hide();
+    $("#intro-page").show();
+    $("#input").val('');
+}
+
+function hideIntroShowResult() {
+    $("#intro-page").hide();
+    $("#result-page").show();
+    getCity();
+}
+
+$(document).ready(function () {
+    hideResultShowIntro();
+    $('#loadWait').hide();
+    $("#listTopCities").css("line-height", "50");
+    //document.getElementById('input').addEventListener('keypress', (e) => {
+    //   e.preventDefault();
+    //});
+});
 
 function getDate() {
     date = new Date().toString();

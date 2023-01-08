@@ -5,7 +5,7 @@
 # -*- coding: utf-8 -*-
 import time, json, string
 
-from flask import Flask, jsonify, request, url_for, render_template
+from flask import Flask, jsonify, request, url_for, render_template, abort
 from flask_cors import CORS
 
 
@@ -61,7 +61,7 @@ def info():
 @app.route('/<string:cityname>', methods=['GET']) #Första bokstaven i stadens namn måste alltid vara stor!!!
 def searchCity(cityname):
 
-    
+
     if request.method == 'GET' and cityname != "favicon.ico":
 
         print("Cityname: " + cityname)
@@ -129,6 +129,12 @@ def searchCity(cityname):
         print("Fatal error 505: favicon not found.")
         return("Infocity error")
 
+'''
+@app.route('/')
+def index():
+    abort(404)
+    return "Record not found"
+'''
 
 # ****************************
 # Route /test
@@ -164,4 +170,6 @@ def currExchange():
 if __name__ == "__main__":
     app.run("localhost", 6969)    
 
-#app.run(debug=True)£
+#app.run(debug=True)
+#app.logger.debug()
+#app.logger.error()

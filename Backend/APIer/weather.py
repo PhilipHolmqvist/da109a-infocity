@@ -1,12 +1,7 @@
-# *****************************************
-# Author: Sossio Giorgelli, version 1
-# *****************************************
+# Author: Sossio Giorgelli, version 3
+# This program fetches information from weatherapi for specific city.
 
-# This file fetches information from weatherapi-com for specific city.
-
-# Import required recources. 
-import requests
-import json
+import requests, json
 
 # Method to return city weather.
 def get_cityWeather(countryName):
@@ -21,6 +16,7 @@ def get_cityWeather(countryName):
     }
 
     headers = {
+        # The api key.
         "X-RapidAPI-Key": "0ab490636dmsh7da5c2757e98131p159b59jsn6b2e12133ae3",
         "X-RapidAPI-Host": "weatherapi-com.p.rapidapi.com"
     }
@@ -36,9 +32,15 @@ def get_cityWeather(countryName):
     response_data = response.json()
 
     data = json.loads(response.text)
+
+    '''
+    if(data['error']['message'] == "No matching location found."):
+        print("Exception is solved!")
+    '''
+    
     return data
 
-    # Det som händer nedan finns i main.py.
+    # Code bellow is used to test if api works well. 
     ''' 
     # City name, city country.
     #print(response_data['location']['name'] + ", " + response_data['location']['country'])
