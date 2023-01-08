@@ -23,13 +23,13 @@ function dataCallback() {
 
         var jsonFile = JSON.parse(xhr.responseText);
 
-        document.getElementById('callingCode').innerHTML = "Landskod: " + jsonFile.callingCode;
+        document.getElementById('callingCode').innerHTML = "Country code: " + jsonFile.callingCode;
         document.getElementById('capital').innerHTML = "Capital: " + jsonFile.capital;
         document.getElementById('countryName').innerHTML = jsonFile.countryName;
         document.getElementById('currencyCodes').innerHTML = "Currency: " + jsonFile.currencyCodes;
         document.getElementById('flagImgUri').src = jsonFile.flagImgUri;
         document.getElementById('numRegions').innerHTML = "Num of regions: " + jsonFile.numRegions;
-        document.getElementById('tenEuroConversion').innerHTML = "EUR to SEK: " + jsonFile.tenEuroConversion;
+        //document.getElementById('tenEuroConversion').innerHTML = "EUR to SEK: " + jsonFile.tenEuroConversion;
 
         document.getElementById('city-elevationMeters').innerHTML = "M.a.s.l: " + jsonFile.city.elevationMeters;
         document.getElementById('city-name').innerHTML = jsonFile.city.name;
@@ -50,16 +50,29 @@ function dataCallback() {
         document.getElementById('city-weather-DayThree-icon').src = jsonFile.city.weather.DayThree.icon;
         document.getElementById('city-weather-DayThree-tempAvg').innerHTML = "Avg temp: " + jsonFile.city.weather.DayThree.tempAvg;
         document.getElementById('city-weather-DayThree-windMax').innerHTML = "Wind: " + jsonFile.city.weather.DayThree.windMax;
+        document.getElementById('amount').value = "10";
+        document.querySelector('.exchange-rate').innerHTML = "10 EUR = " + jsonFile.tenEuroConversion + " " + jsonFile.currencyCodes;
         
         //Get long and lat and insert to google map.
         
         window.initMap = new google.maps.Map(document.getElementById("map"), {center: { lat: parseFloat(jsonFile.city.latitude), lng: parseFloat(jsonFile.city.longitud) },zoom: 8});
+        new google.maps.Marker({position: {lat: parseFloat(jsonFile.city.latitude), lng: parseFloat(jsonFile.city.longitud)}, map: window.initMap}); 
 
         $('#map').show();
         resetPageForNewSearch();
         
         originalcurrency = jsonFile.currencyCodes;
-        currentrate = jsonFile.currentRate;
+        for (let i = 0; i < dropList.length; i++) {
+            for(let currency_code in country_list){
+                // Sätter default-case för valutorna.
+                let selected = i == 0 ? currency_code == "EUR" ? "selected" : "" : currency_code == originalcurrency ? "selected" : "";
+                // Skapar option tag med valutan i listan som värde och id samt lägger till valutan som text
+                let optionTag = `<option value="${currency_code}" id="${currency_code}"${selected}>${currency_code}</option>`;
+                // Lägger till skapade tags till Frontenden
+                dropList[i].insertAdjacentHTML("beforeend", optionTag);
+            }
+        }
+        
         //dataDiv = document.getElementById('titel');
         //dataDiv.innerHTML = jsonFile.city.name;
     }else if(xhr.readyState == 4 && xhr.status == 500){
@@ -115,9 +128,6 @@ function hideIntroShowResult() {
     getCity();
 }
 
-
-
-
 function resetContent() {
     document.getElementById('callingCode').innerHTML = "";
     document.getElementById('capital').innerHTML = "";
@@ -146,6 +156,11 @@ function resetContent() {
     document.getElementById('city-weather-DayThree-icon').src = "";
     document.getElementById('city-weather-DayThree-tempAvg').innerHTML = "";
     document.getElementById('city-weather-DayThree-windMax').innerHTML = "";
+
+    document.getElementById('amount').innerHTML = "10";
+    document.getElementById('exid').innerHTML = "";
+    $('#map').hide();
+
 }
 
 $(document).ready(function () {
