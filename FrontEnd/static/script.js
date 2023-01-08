@@ -49,10 +49,19 @@ function dataCallback() {
         document.getElementById('city-weather-DayThree-tempAvg').innerHTML = "Avg temp: " + jsonFile.city.weather.DayThree.tempAvg;
         document.getElementById('city-weather-DayThree-windMax').innerHTML = "Wind: " + jsonFile.city.weather.DayThree.windMax;
 
-        resetPageForNewSearch();
-        
-        originalcurrency = jsonFile.currencyCodes;
         currentrate = jsonFile.currentRate;
+        originalcurrency = jsonFile.currencyCodes;
+        for (let i = 0; i < dropList.length; i++) {
+            for(let currency_code in country_list){
+                // Sätter default-case för valutorna.
+                let selected = i == 0 ? currency_code == "EUR" ? "selected" : "" : currency_code == originalcurrency ? "selected" : "";
+                // Skapar option tag med valutan i listan som värde och id samt lägger till valutan som text
+                let optionTag = `<option value="${currency_code}" id="${currency_code}"${selected}>${currency_code}</option>`;
+                // Lägger till skapade tags till Frontenden
+                dropList[i].insertAdjacentHTML("beforeend", optionTag);
+            }
+        }
+        
         //dataDiv = document.getElementById('titel');
         //dataDiv.innerHTML = jsonFile.city.name;
     }else if(xhr.readyState == 4 && xhr.status == 500){
