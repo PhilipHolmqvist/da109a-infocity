@@ -147,6 +147,19 @@ if __name__ == "__main__":
 def citiesInCountry(countryName):
     print("Hello")
 
+@app.route('/convert?from="<string:from>&to=<string:to>&amount=<string:amount>', methods=['GET'])
+def currExchange():
+    from_currency = request.args.get('from')
+    to_currency = request.args.get('to')
+    amount = request.args.get('amount')
+
+    result = get_rate(from_currency, to_currency, amount)
+
+    print("-----------------------------")
+    print("Server sending currency response data:")
+    print("-----------------------------")
+    print(result)
+    return result;
 
 if __name__ == "__main__":
     app.run("localhost", 6969)    

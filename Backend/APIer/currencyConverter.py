@@ -10,5 +10,15 @@ def get_rate(currencyfrom, currencyto, amount):
     }
     response = requests.request("GET", url, headers = headers, params=queryString)
     data = json.loads(response.text)
+    '''
+    print("From: " + data['base_currency_name'])
+    print("Amount: " + data['amount'] + " " + currencyfrom)
+    print("To: " + data['rates'][currencyto]['currency_name'])
+    print("Amount: " + data['rates'][currencyto]['rate_for_amount'] + " " + currencyto)
+    print("Current rate: " + data['rates'][currencyto]['rate'] + " " + currencyto + " / 1 " + currencyfrom)
+    return data
+    '''
+
+
     return data
 

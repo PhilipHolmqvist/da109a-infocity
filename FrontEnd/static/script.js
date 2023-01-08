@@ -1,6 +1,8 @@
 // **************************************
 // Js för att presentera json i frontend
 // **************************************
+var currentrate = 0;
+var originalcurrency = "SEK";
 
 var xhr = null;
 getXmlHttpRequestObject = function () {
@@ -46,10 +48,11 @@ function dataCallback() {
         document.getElementById('city-weather-DayThree-icon').src = jsonFile.city.weather.DayThree.icon;
         document.getElementById('city-weather-DayThree-tempAvg').innerHTML = "Temp: " + jsonFile.city.weather.DayThree.tempAvg;
         document.getElementById('city-weather-DayThree-windMax').innerHTML = "Vind: " + jsonFile.city.weather.DayThree.windMax;
-
+        
+        originalcurrency = jsonFile.currencyCodes;
+        currentrate = jsonFile.currentRate;
         //dataDiv = document.getElementById('titel');
         //dataDiv.innerHTML = jsonFile.city.name;
-
     }
 }
 
