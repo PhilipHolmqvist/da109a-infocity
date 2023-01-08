@@ -88,8 +88,8 @@ def searchCity(cityname):
         jsondata['capital'] = countryInfo['data']['capital']
         jsondata['callingCode'] = countryInfo['data']['callingCode']
         jsondata['currencyCodes'] = countryInfo['data']['currencyCodes']
-        jsondata['tenEuroConversion'] = currencyConversion['rates'][currencyto]['rate_for_amount']
-        jsondata['currentRate'] = currencyConversion['rates'][currencyto]['rate']
+        #jsondata['tenEuroConversion'] = currencyConversion['rates'][currencyto]['rate_for_amount']
+        #jsondata['currentRate'] = currencyConversion['rates'][currencyto]['rate']
         jsondata['numRegions'] = countryInfo['data']['numRegions']
         jsondata['city'] = city      
 
