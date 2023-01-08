@@ -43,10 +43,10 @@ def searchCity(cityname):
         cityWeather = get_cityWeather(cityname.capitalize())
         time.sleep(1) # Pausa 1 s pga. api begräsningar.
         countryInfo = get_countryDetails(cityInfo['data']['countryCode'])
-        currencyto = countryInfo['data']['currencyCodes']
-        currencyto = json.dumps(currencyto, indent=None)
-        currencyto = currencyto.replace('[', '').replace(']', '').replace('"','')
-        currencyConversion = get_rate("EUR", currencyto, 10)
+        #currencyto = countryInfo['data']['currencyCodes']
+        #currencyto = json.dumps(currencyto, indent=None)
+        #currencyto = currencyto.replace('[', '').replace(']', '').replace('"','')
+        #currencyConversion = get_rate("EUR", currencyto, 10)
         
         weatherDayOne = {}
         weatherDayOne['tempAvg'] = cityWeather['forecast']['forecastday'][0]['day']['avgtemp_c']
@@ -78,6 +78,8 @@ def searchCity(cityname):
         city['wikidataID'] = cityInfo['data']['wikiDataId'] 
         city['elevationMeters'] = '12m'
         city['weather'] = weather
+        city['longitud'] = cityInfo['data']['longitude']
+        city['latitude'] = cityInfo['data']['latitude']
 
         jsondata = {}
         jsondata['wikidataID'] = countryInfo['data']['numRegions']
@@ -86,15 +88,16 @@ def searchCity(cityname):
         jsondata['capital'] = countryInfo['data']['capital']
         jsondata['callingCode'] = countryInfo['data']['callingCode']
         jsondata['currencyCodes'] = countryInfo['data']['currencyCodes']
-        jsondata['tenEuroConversion'] = currencyConversion['rates'][currencyto]['rate_for_amount']
-        jsondata['currentRate'] = currencyConversion['rates'][currencyto]['rate']
+        #jsondata['tenEuroConversion'] = currencyConversion['rates'][currencyto]['rate_for_amount']
+        #jsondata['currentRate'] = currencyConversion['rates'][currencyto]['rate']
         jsondata['numRegions'] = countryInfo['data']['numRegions']
         jsondata['city'] = city      
 
         print("-----------------------------")
         print("Server sending response data:")
         print("-----------------------------")
-        print(jsondata)
+        print("Long: " + str(jsondata['city']['longitud']))
+        print("Lat: " + str(jsondata['city']['latitude']))
 
         return (jsondata)
     else:

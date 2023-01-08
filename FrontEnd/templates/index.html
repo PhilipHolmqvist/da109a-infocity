@@ -30,7 +30,8 @@
         <div class="loader" id="loadWait"></div>
 
         <div class="nav-search">
-            <input list="listTopCities" type="search" id="input" placeholder="e.g. malmö">
+            <input list="listTopCities" type="search" id="input" class="inputT" placeholder="">
+            <!--onfocus="this.placeholder=''"-->
             <button onclick="hideIntroShowResult()" id="search-button-info">Search</button>
             <datalist id="listTopCities" class="datalist" height="50px">
                 <option value="london">
@@ -43,7 +44,7 @@
                 <option value="amsterdam">
             </datalist>
         </div>
-        
+
     </nav>
 
 
@@ -148,54 +149,57 @@
     <div id="result-page">
         <div id="background">
             <div id="info">
-            
-            <h1 id="city-name">Cityname</h1>
-            <h2 id="city-region">Region</h2>
-            <h2 id="countryName">Country</h2>
-            <img id="flagImgUri" src="imgUri" alt="">
+                <div id="left-side-info">
+                    <h1 id="city-name">Cityname</h1>
+                    <h2 id="city-region">Region</h2>
+                    <h2 id="countryName">Country</h2>
+                    <img id="flagImgUri" src="imgUri" alt="">
 
-            <h2 id="capital">Capital</h2>
-            <h2 id="callingCode">Country code</h2>
-            <h2 id="currencyCodes">Currency</h2>
-            <h2 id="numRegions">Regions</h2>
-            <h2 id="city-elevationMeters">m.a.s.l</h2>
-            <h2 id="city-population">Population</h2>
-            
-            <h2 id="tenEuroConversion">Currency index</h2>
+                    <h2 id="capital">Capital</h2>
+                    <h2 id="callingCode">Country code</h2>
+                    <h2 id="currencyCodes">Currency</h2>
+                    <h2 id="numRegions">Regions</h2>
+                    <h2 id="city-elevationMeters">m.a.s.l</h2>
+                    <h2 id="city-population">Population</h2>
 
-        </div>
-
-        <div id="currency">
-            <p class="titel">Currency</p>
-            <p id="cityCurrency"></p>
-            <div class="wrapper">
-                <header>Currency Converter</header>
-                <form action="#">
-                    <div class="amount">
-                        <p>Enter Amount</p>
-                        <input id="amount" type="text" value="10">
-                    </div>
-                    <div class="drop-list">
-                        <div class="from">
-                            <p>From</p>
-                            <div class="select-box">
-                                <select id="currencyfrom"></select>
-                            </div>
-                        </div>
-
-                        <div class="icon"><i class="fa-solid fa-right-left"></i></div>
-                        <div class="to">
-                            <p>To</p>
-                            <div class="select-box">
-                                <select id="currencyto"></select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="exchange-rate"></div>
-                    <button id="exchangebtn" onclick="convert()">Get Exchange Rate</button>
-                </form>
+                    <h2 id="tenEuroConversion">Currency index</h2>
+                </div>
+                <div id="right-side-info">
+                    <div id="map"></div>
+                </div>
             </div>
-        </div>
+
+            <div id="currency">
+                <p class="titel">Currency</p>
+                <p id="cityCurrency"></p>
+                <div class="wrapper">
+                    <header>Currency Converter</header>
+                    <form action="#">
+                        <div class="amount">
+                            <p>Enter Amount</p>
+                            <input id="amount" type="text" value="10">
+                        </div>
+                        <div class="drop-list">
+                            <div class="from">
+                                <p>From</p>
+                                <div class="select-box">
+                                    <select id="currencyfrom"></select>
+                                </div>
+                            </div>
+
+                            <div class="icon"><i class="fa-solid fa-right-left"></i></div>
+                            <div class="to">
+                                <p>To</p>
+                                <div class="select-box">
+                                    <select id="currencyto"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="exchange-rate"></div>
+                        <button id="exchangebtn" onclick="convert()">Get Exchange Rate</button>
+                    </form>
+                </div>
+            </div>
 
             <div id="weather">
 
@@ -248,6 +252,10 @@
     <script type="text/javascript" src="../static/countrylist.js"></script>
     <script type="text/javascript" src="../static/currencyscript.js"></script>
 
+    <!-- Javascript för google maps -->
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBMJwYD7B0qYZ3usm2E_1Z9PrOXVxSZMYE&callback=initMap&libraries=places&v=weekly"
+        defer></script>
 </body>
 
 </html>
