@@ -78,6 +78,8 @@ def searchCity(cityname):
         city['wikidataID'] = cityInfo['data']['wikiDataId'] 
         city['elevationMeters'] = '12m'
         city['weather'] = weather
+        city['longitud'] = cityInfo['data']['longitude']
+        city['latitude'] = cityInfo['data']['latitude']
 
         jsondata = {}
         jsondata['wikidataID'] = countryInfo['data']['numRegions']
@@ -94,7 +96,8 @@ def searchCity(cityname):
         print("-----------------------------")
         print("Server sending response data:")
         print("-----------------------------")
-        print(jsondata)
+        print("Long: " + str(jsondata['city']['longitud']))
+        print("Lat: " + str(jsondata['city']['latitude']))
 
         return (jsondata)
     else:
