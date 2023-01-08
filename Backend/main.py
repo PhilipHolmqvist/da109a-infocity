@@ -43,10 +43,10 @@ def searchCity(cityname):
         cityWeather = get_cityWeather(cityname.capitalize())
         time.sleep(1) # Pausa 1 s pga. api begräsningar.
         countryInfo = get_countryDetails(cityInfo['data']['countryCode'])
-        currencyto = countryInfo['data']['currencyCodes']
-        currencyto = json.dumps(currencyto, indent=None)
-        currencyto = currencyto.replace('[', '').replace(']', '').replace('"','')
-        currencyConversion = get_rate("EUR", currencyto, 10)
+        #currencyto = countryInfo['data']['currencyCodes']
+        #currencyto = json.dumps(currencyto, indent=None)
+        #currencyto = currencyto.replace('[', '').replace(']', '').replace('"','')
+        #currencyConversion = get_rate("EUR", currencyto, 10)
         
         weatherDayOne = {}
         weatherDayOne['tempAvg'] = cityWeather['forecast']['forecastday'][0]['day']['avgtemp_c']
