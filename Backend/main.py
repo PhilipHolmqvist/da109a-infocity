@@ -74,7 +74,7 @@ def searchCity(cityname):
         currencyto = countryInfo['data']['currencyCodes']
         currencyto = json.dumps(currencyto, indent=None)
         currencyto = currencyto.replace('[', '').replace(']', '').replace('"','')
-        euroconversion = get_rate("EUR", currencyto, 10)
+        currencyConversion = get_rate("EUR", currencyto, 10)
         
         weatherDayOne = {}
         weatherDayOne['tempAvg'] = cityWeather['forecast']['forecastday'][0]['day']['avgtemp_c']
@@ -114,7 +114,8 @@ def searchCity(cityname):
         jsondata['capital'] = countryInfo['data']['capital']
         jsondata['callingCode'] = countryInfo['data']['callingCode']
         jsondata['currencyCodes'] = countryInfo['data']['currencyCodes']
-        jsondata['tenEuroConversion'] = 10
+        jsondata['tenEuroConversion'] = currencyConversion['rates'][currencyto]['rate_for_amount']
+        jsondata['currentRate'] = currencyConversion['rates'][currencyto]['rate']
         jsondata['numRegions'] = countryInfo['data']['numRegions']
         jsondata['city'] = city      
 
