@@ -78,14 +78,20 @@ function dataCallback() {
     }else if(xhr.readyState == 4 && xhr.status == 500){
         console.log("500 error, could not find city you searched for..")
         document.getElementById('city-name').innerHTML = "City not found!"
-        document.getElementById('countryName').innerHTML = "Check the spelling of the input.."
+        document.getElementById('countryName').innerHTML = "Check the spelling of the input..."
+        document.getElementById('city-weather-DayOne-chanceOfRain').innerHTML = "No data..."
+        document.getElementById('city-weather-DayTwo-chanceOfRain').innerHTML = "No data..."
+        document.getElementById('city-weather-DayThree-chanceOfRain').innerHTML = "No data..."
         $('#map').hide();
         resetPageForNewSearch();
 
     }else if(xhr.readyState == 4 && xhr.status == 404){
         console.log("404 error, could not find city..")
         document.getElementById('city-name').innerHTML = "City not found!"
-        document.getElementById('countryName').innerHTML = "Input field was empty.."
+        document.getElementById('countryName').innerHTML = "Input field was empty..."
+        document.getElementById('city-weather-DayOne-chanceOfRain').innerHTML = "No data..."
+        document.getElementById('city-weather-DayTwo-chanceOfRain').innerHTML = "No data..."
+        document.getElementById('city-weather-DayThree-chanceOfRain').innerHTML = "No data..."
         $('#map').hide();
         resetPageForNewSearch();
     }
