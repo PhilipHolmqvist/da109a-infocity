@@ -1,9 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
-
-/* General */
+/*************************/
+/* GENERAL */
+/*************************/
 * {
     font-family: 'Poppins', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -13,7 +18,9 @@ body {
     background-attachment: fixed;
 }
 
-/* Navbar */
+/*************************/
+/* NAVBAR */
+/*************************/
 .navbar {
     z-index: 10;
     width: 100%;
@@ -41,7 +48,6 @@ a {
     color: white;
     padding-left: 5px;
 }
-
 
 .nav-icon a:hover {
     transform: scale(1.1);
@@ -111,9 +117,7 @@ input:focus::placeholder {
 
 .loader {
     border: 8px solid #f3f3f3;
-    /* Light grey */
     border-top: 8px solid #3498db;
-    /* Blue */
     border-radius: 50%;
     width: 50px;
     height: 50px;
@@ -130,78 +134,16 @@ input:focus::placeholder {
     }
 }
 
-/* Else */
-#background {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    grid-gap: 0px;
-    background-color: rgb(192, 192, 192, 0.349);
-
+.up-scrollbar{
+    position: sticky;
+    bottom: 0;
+    float: right;
+    color: white;
 }
 
-#cityFlag {
-    width: 120px;
-}
-
-#flagImgUri {
-    width: 100px;
-}
-
-#currency {
-    margin-left: auto;
-    margin-right: 10px;
-    width: 65%;
-    padding-left: 25px;
-    padding-top: 25px;
-    border: 1px solid black;
-    background-color: rgba(107, 107, 107, 0.349);
-    border-radius: 30px;
-    margin-top: 10px;
-}
-
-#first_site {
-    width: 40%;
-    height: 40%;
-    margin: 0px;
-    padding-left: 30%;
-}
-
-#icon_link {
-    display: block;
-    margin-right: auto;
-    margin-left: auto;
-    padding-top: 5px;
-}
-
-body>.grid {
-    display: grid;
-    grid-template-areas:
-        'header'
-        'section'
-        'footer'
-    ;
-}
-
-header {
-    grid-area: header;
-    display: flex;
-    justify-content: center;
-}
-
-header>h1 {
-    border-top-right-radius: 20px;
-    border-top-left-radius: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
-    width: 60%;
-    background-color: darkgrey;
-    text-align: center;
-    margin-bottom: 0px;
-}
-
-/* Index.html */
-/************************************************/
+/*************************/
+/* INTRO PAGE */
+/*************************/
 .main-footer {
     height: auto !important;
     text-align: center;
@@ -224,7 +166,6 @@ header>h1 {
 
 .fixed-background1 {
     overflow: hidden;
-    /*-- Correction for iOS --*/
     padding: 28rem 0;
     width: 100%;
     color: #000;
@@ -232,7 +173,6 @@ header>h1 {
 
 .fixed-background2 {
     overflow: hidden;
-    /*-- Correction for iOS --*/
     padding: 12rem 0;
     position: relative;
     width: 200px;
@@ -277,75 +217,52 @@ footer>h4 {
     text-align: center;
 }
 
-/************************************************/
-
-#search-bar {
-    flex: 1;
-    border: none;
-    outline: none;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-}
-
-#search-button {
-    padding: 20px;
-    border: none;
-    outline: none;
-    letter-spacing: 1px;
-    cursor: pointer;
-    border-top-right-radius: 20px;
-}
-
-#left-side-info{
-    width: 50%;
-    text-align: center;
-    padding-bottom: 10px;
-    float: left;
-}
-
-#map{
-    height:100%;
-    width:100%;
+/*************************/
+/* WEATHER */
+/*************************/
+#weather {
+    background-color: rgba(72, 118, 255, 0.349);
+    padding-left: 25px;
+    padding-top: 25px;
+    height: 330px;
     margin: auto;
-    z-index: 0;
+    width: 70%;
+    border-radius: 10px;
+    margin-bottom: 10px;
 }
 
-#right-side-info{
-    width: 50%;
-    height: 100%;
-    padding-top: 5%;
-    float: right;
-}
-
-#info {
-    margin-top: 15px;
+#weather h3 {
     text-align: center;
-    padding-bottom: 10px;
 }
 
-#info>h3 {
-    display: flex;
+.grid-container-weather {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 5px;
 }
 
-#info>p {
-    display: flex;
-    margin-left: 62px;
-    padding-top: 10px;
+.grid-item-weather {
+    padding: 10px;
 }
 
-#head_img {
-    display: block;
-    margin-right: auto;
-    margin-left: auto;
+/*************************/
+/* CURRENCY */
+/*************************/
+#currency {
+    width: 90%;
+    margin: auto;
+    padding-left: 25px;
+    padding-top: 25px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    background-color: rgba(72, 118, 255, 0.349);
+    border-radius: 10px;
 }
 
-/*CURRENCY EXCHANGE*/
 .wrapper {
-    width: 95%;
+    width: 80%;
     padding-top: 5px;
     padding-bottom: 5px;
-    padding-left: 15px;
-    padding-right: 15px;
     border-radius: 7px;
 }
 
@@ -402,12 +319,12 @@ form .drop-list {
 }
 
 .select-box img {
-    max-width: 21px;
+    max-width: 18px;
 }
 
 .select-box select {
     width: auto;
-    font-size: 16px;
+    font-size: 14px;
     background: none;
     margin: 0 -5px 0 5px
 }
@@ -451,22 +368,87 @@ form button:hover {
     background: #416dfd;
 }
 
-/* WEATHER */
-#weather {
-    background-color: rgba(192, 192, 192, 0.349);
+/*************************/
+/* INFO */
+/*************************/
+#left-side-info {
+    width: 50%;
+    text-align: center;
     float: left;
+}
+
+#right-side-info {
+    width: 50%;
+    height: 100%;
+    float: right;
+}
+
+#map {
+    height: 100%;
     width: 100%;
-    padding-left: 25px;
-    padding-top: 25px;
-    height: 330px;
+    margin: auto;
+    z-index: 0;
+    border-radius: 10px;
 }
 
-.grid-container-weather {
+#info {
+    margin: 15px;
+    padding: 15px;
+    text-align: center;
+    padding-bottom: 10px;
+    background-color: rgba(72, 118, 255, 0.349);
+    border-radius: 10px;
+}
+
+#info h2 {
+    font-size: 20px;
+}
+
+#info>h3 {
+    display: flex;
+}
+
+#info>p {
+    display: flex;
+    margin-left: 62px;
+    padding-top: 10px;
+}
+
+#background {
+    width: 100%;
     display: grid;
-    grid-template-columns: auto auto auto;
-    padding: 5px;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 0px;
+    margin-bottom: 20px;
+    /*background-color: rgba(78, 143, 255, 0.349);*/
 }
 
-.grid-item-weather {
-    padding: 10px;
+#flagImgUri {
+    width: 100px;
+}
+
+body>.grid {
+    display: grid;
+    grid-template-areas:
+        'header'
+        'section'
+        'footer'
+    ;
+}
+
+header {
+    grid-area: header;
+    display: flex;
+    justify-content: center;
+}
+
+header>h1 {
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 60%;
+    background-color: darkgrey;
+    text-align: center;
+    margin-bottom: 0px;
 }
