@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Infocity</title>
+    <link rel="icon" type="image/x-icon" href="/FrontEnd/static/icons/infocity-icon.ico">
 
     <link rel="stylesheet" href="../static/style.css">
     <!-- CSS only -->
@@ -19,16 +20,14 @@
 
 <body>
 
-    <nav class="nav">
-        <div class="name">
-            <a href="index.html"><img src="/FrontEnd/static/icons/infocity-icon_v2_221227.png" width="50px"></a>
+    <nav class="navbar">
+        <div class="nav-icon">
+            <a href="index.html"><img src="/FrontEnd/static/icons/infocity-icon.png" width="50px"></a>
         </div>
-        <div class="bar">
-            <input type="search" id="input" placeholder="Sök">
-            <button onclick="getCity()" id="search-button-info">Sök</button>
+        <div class="nav-search">
+            <input type="search" id="input" placeholder="e.g. malmö">
+            <button onclick="getCity()" id="search">Search</button>
         </div>
-
-
     </nav>
 
     <div id="background">
@@ -38,6 +37,7 @@
             <h2 id="city-region">region</h2>
             <h2 id="countryName">country</h2>
             <img id="flagImgUri" src="imgUri" alt="Country Flag">
+
             <h2 id="capital">Capital</h2>
             <h2 id="callingCode">Country code</h2>
             <h2 id="currencyCodes">Currency</h2>
@@ -47,8 +47,9 @@
             
             <h2 id="tenEuroConversion">Currency index</h2>
             <p id="dateTime"> Data collected: </p>
+
         </div>
-        
+
         <div id="currency">
             <p class="titel">Currency</p>
             <p id="cityCurrency"></p>

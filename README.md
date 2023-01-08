@@ -11,5 +11,9 @@ version 0.4.3: Json var klar att levereras till frontend!
 
 <br><br>
 
+version 0.5.0: Denna versionen innebär att frontend och backend sammarbetar. (med koppling)
+
+<br><br>
+
 <p><strong>Nuvarande version: </strong></p>
-version 0.5.0: Denna versionen innebär att frontend och backend sammarbetar!
+version 1.0.0: Frontend och Backend är helt frikopplade!

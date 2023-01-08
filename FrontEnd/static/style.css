@@ -1,26 +1,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
+
+/* General */
 * {
     font-family: 'Poppins', sans-serif;
 }
 
+body {
+    background-image: url(/FrontEnd/static/img/823-8236593_singapore-city-transparent.png);
+    background-color: grey;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
 
-.nav {
+/* Navbar */
+.navbar {
     width: 100%;
     background-color: rgb(32, 32, 32);
     padding-bottom: 10px;
     padding-top: 10px;
+}
+
+nav.navbar {
     position: sticky;
+    top: 0;
     display: grid;
     grid-template-columns: 3fr 1fr;
-}
-
-
-
-.bar {
-    padding-top: 8px;
-}
-.name {
     text-decoration: none;
     padding-left: 15px;
     width: 78%;
@@ -32,28 +37,26 @@ a {
     float: left;
 }
 
-.name a {
+.nav-icon a {
     text-decoration: none;
     color: white;
     padding-left: 5px;
 }
 
-.name img:hover{
-    transform: scale(1.1);
-}
 
-.name a:hover {
+.nav-icon a:hover {
+    transform: scale(1.1);
     color: white;
 }
 
-#search_first{
+#search_first {
     width: 100%;
     height: 55px;
     display: flex;
     padding-bottom: 10px;
 }
 
-#search-bar{
+#search-bar {
     flex: 1;
     border: none;
     outline: none;
@@ -61,7 +64,7 @@ a {
     border-bottom-left-radius: 20px;
 }
 
-#search_button{
+#search_button {
     padding: 20px;
     border: none;
     outline: none;
@@ -70,7 +73,6 @@ a {
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
 }
-
 
 #input {
     border-radius: 20px;
@@ -94,14 +96,42 @@ a {
     border-radius: 5px;
 }
 
+
+#infocityLogo {
+    background-color: rgb(32, 32, 32);
+    border: #fff;
+}
+
+#search:hover {
+    transform: scale(1.1);
+}
+
 #search-button-info:hover {
     transform: scale(1.1);
 }
 
-body {
-    background-image: url(/img/823-8236593_singapore-city-transparent.png);
+.loader {
+    border: 8px solid #f3f3f3;
+    /* Light grey */
+    border-top: 8px solid #3498db;
+    /* Blue */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
 }
 
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(720deg);
+    }
+}
+
+/* Else */
 #background {
     width: 100%;
     display: grid;
@@ -111,31 +141,11 @@ body {
 
 }
 
-#first_info {
-    width: 99%;
-    padding-left: 10px;
-    border: 1px solid black;
-    min-height: 100vh;
-}
-
-#first_info > h1{
-    text-align: center;
-    text-decoration: underline;
-}
-
-#first_info > h4{
-    text-align: center;
-}
-
-#first_info > h3{
-    text-align: center;
-}
-
 #cityFlag {
     width: 120px;
 }
 
-#flagImgUri{
+#flagImgUri {
     width: 100px;
 }
 
@@ -145,6 +155,7 @@ body {
     width: 65%;
     padding-left: 25px;
     padding-top: 25px;
+    border: 1px solid black;
     background-color: rgba(107, 107, 107, 0.349);
     border-radius: 30px;
     margin-top: 10px;
@@ -155,14 +166,6 @@ body {
     margin-left: 41px;
 }
 
-
-body{
-    background-image: url(/FrontEnd/static/img/823-8236593_singapore-city-transparent.png);
-    background-color: grey;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
-
 #first_site {
     width: 40%;
     height: 40%;
@@ -170,7 +173,7 @@ body{
     padding-left: 30%;
 }
 
-#icon_link{
+#icon_link {
     display: block;
     margin-right: auto;
     margin-left: auto;
@@ -179,10 +182,10 @@ body{
 
 body>.grid {
     display: grid;
-    grid-template-areas: 
-    'header'
-    'section'
-    'footer'
+    grid-template-areas:
+        'header'
+        'section'
+        'footer'
     ;
 }
 
@@ -203,27 +206,87 @@ header>h1 {
     margin-bottom: 0px;
 }
 
+/* Index.html */
+/************************************************/
+.main-footer {
+    height: auto !important;
+    text-align: center;
+    background-color: #154c79;
+}
 
-section {
-    grid-area: section;
+.main-footer a {
+    color: #fff;
+}
+
+.fixed-background1 h1 {
+    font-size: 7rem;
+    text-shadow: 4px 4px #727272;
+}
+
+.fixed-background1 h2 {
+    font-size: 2rem !important;
+    text-shadow: 4px 2px #727272;
+}
+
+.fixed-background1 {
+    overflow: hidden;
+    /*-- Correction for iOS --*/
+    padding: 28rem 0;
+    position: relative;
+    width: 100%;
+    z-index: 1000 !important;
+    color: #000;
+}
+
+.fixed-background2 {
+    overflow: hidden;
+    /*-- Correction for iOS --*/
+    padding: 12rem 0;
+    position: relative;
+    width: 200px;
+    z-index: 1000 !important;
+}
+
+.welcome-page {
+    padding: 40px;
+    width: 100%;
+    background-color: #1e81b0;
+    padding-bottom: 10px;
+}
+
+.welcome-page img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+}
+
+.welcome-content {
+    margin: auto;
+    width: 80%;
+    height: 380px;
+    text-align: center;
+    padding: 20px;
+}
+
+footer {
+    grid-area: footer;
     display: flex;
     justify-content: center;
 }
 
-#hej {
-    display: flex;
-    flex-direction: column;
+footer>h4 {
+    width: 60%;
+    background-color: darkgray;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    margin-top: 0px;
     padding-left: 20px;
     padding-right: 20px;
-    width: 60%;
-    background-color: rgb(155, 155, 155);
-    padding-bottom: 10px;
+    text-align: center;
 }
 
-#search>h1 {
-    margin: 0%;
-    margin-bottom: 10px;
-}
+/************************************************/
 
 #search-bar {
     flex: 1;
@@ -240,22 +303,6 @@ section {
     letter-spacing: 1px;
     cursor: pointer;
     border-top-right-radius: 20px;
-}
-footer{
-   grid-area: footer;
-   display: flex;
-   justify-content: center;
-}
-
-footer > h4{
-    width: 60%;
-    background-color: darkgray;
-    border-bottom-right-radius: 20px;
-    border-bottom-left-radius: 20px;
-    margin-top: 0px;
-    padding-left: 20px;
-    padding-right: 20px;
-    text-align: center;
 }
 
 #info {
@@ -394,7 +441,6 @@ form button:hover {
 }
 
 /* WEATHER */
-
 #weather {
     background-color: rgba(192, 192, 192, 0.349);
     float: left;
