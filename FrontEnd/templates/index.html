@@ -30,7 +30,8 @@
         <div class="loader" id="loadWait"></div>
 
         <div class="nav-search">
-            <input list="listTopCities" type="search" id="input" placeholder="e.g. malmö">
+            <input list="listTopCities" type="search" id="input" class="inputT" placeholder="">
+            <!--onfocus="this.placeholder=''"-->
             <button onclick="hideIntroShowResult()" id="search-button-info">Search</button>
             <datalist id="listTopCities" class="datalist" height="50px">
                 <option value="london">

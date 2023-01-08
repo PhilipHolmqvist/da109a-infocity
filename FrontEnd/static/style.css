@@ -74,12 +74,17 @@ a {
 }
 
 #input {
-    border-radius: 20px;
+    border-radius: 10px;
+    padding-left: 14px;
+}
+
+input:focus::placeholder {
+    color: white;
 }
 
 ::placeholder {
-   padding-left: 10px;
-   color: black; 
+    padding-left: 10px;
+    color: #929292;
 }
 
 #input:focus {
@@ -155,11 +160,6 @@ a {
     margin-top: 10px;
 }
 
-.titel {
-    font-size: 35px;
-    margin-left: 41px;
-}
-
 #first_site {
     width: 40%;
     height: 40%;
@@ -226,9 +226,7 @@ header>h1 {
     overflow: hidden;
     /*-- Correction for iOS --*/
     padding: 28rem 0;
-    position: relative;
     width: 100%;
-    z-index: 1000 !important;
     color: #000;
 }
 
@@ -238,7 +236,6 @@ header>h1 {
     padding: 12rem 0;
     position: relative;
     width: 200px;
-    z-index: 1000 !important;
 }
 
 .welcome-page {
@@ -336,14 +333,14 @@ footer>h4 {
     padding-top: 10px;
 }
 
-#head_img{
+#head_img {
     display: block;
     margin-right: auto;
     margin-left: auto;
 }
 
 /*CURRENCY EXCHANGE*/
-.wrapper{
+.wrapper {
     width: 95%;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -438,7 +435,7 @@ form .drop-list {
 form .exchange-rate {
     font-size: 22px;
     margin: 20px 0 30px;
-    
+
 }
 
 form button {
@@ -468,10 +465,8 @@ form button:hover {
     display: grid;
     grid-template-columns: auto auto auto;
     padding: 5px;
-    padding-left: 250px;
 }
 
 .grid-item-weather {
     padding: 10px;
 }
-
