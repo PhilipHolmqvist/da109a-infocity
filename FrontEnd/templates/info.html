@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Infocity</title>
+    <link rel="icon" type="image/x-icon" href="/FrontEnd/static/icons/infocity-icon.ico">
 
     <link rel="stylesheet" href="../static/style.css">
     <!-- CSS only -->
@@ -19,16 +20,14 @@
 
 <body>
 
-    <nav class="nav">
-        <div class="name">
-            <a href="index.html"><img src="/FrontEnd/static/icons/infocity-icon_v2_221227.png" width="50px"></a>
+    <nav class="navbar">
+        <div class="nav-icon">
+            <a href="index.html"><img src="/FrontEnd/static/icons/infocity-icon.png" width="50px"></a>
         </div>
-        <div class="bar">
-            <input type="search" id="input" placeholder="Sök">
-            <button onclick="getCity()">Sök</button>
+        <div class="nav-search">
+            <input type="search" id="input" placeholder="e.g. malmö">
+            <button onclick="getCity()" id="search">Search</button>
         </div>
-
-
     </nav>
 
     <div id="background">
@@ -44,11 +43,11 @@
             <h2 id="numRegions">antal regioner</h2>
             <h2 id="city-elevationMeters">möh</h2>
             <h2 id="city-population">invånare</h2>
-            
+
             <h2 id="tenEuroConversion">valuta index</h2>
 
         </div>
-        
+
         <div id="currency">
             <p class="titel">Currency</p>
             <p id="cityCurrency"></p>
