@@ -36,7 +36,6 @@ function convert(){
 
     //Om apin inte behöver kallas görs bara en uträkning baserat på senaste ratesen.
     if(!callAPI){
-        alert("Didn't call API")
         amount = document.getElementById('amount').value;
         result = (amount * currentrate);
         stringresult = amount + " " + currFrom + " = " + result + " " + currTo;
@@ -47,7 +46,6 @@ function convert(){
     Om APIn behöver kallas görs detta, currentrate uppdateras och ny uträkning görs
     */
     if(callAPI){
-        alert("Called API")
         getRate();
     }
 }
