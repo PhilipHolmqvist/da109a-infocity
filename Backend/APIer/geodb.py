@@ -41,7 +41,7 @@ def get_cityTime(cityName):
 
     response = requests.request("GET", url, headers=headers)
 
-    print(response.text)
+    #print(response.text)
 
 # Få information om ett land som valuta, flagga, antal regioner, lands kod.
 # Country ID måste vara i ISO-3166 format. (SE, US, DK) etc.

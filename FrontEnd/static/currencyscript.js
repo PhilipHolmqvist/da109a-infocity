@@ -79,6 +79,7 @@ function dataCallback2() {
 
 function getRate(){
     console.log("Getting rates...");
+    
     var currFrom = document.getElementById('currencyfrom').value;
     var currTo = document.getElementById('currencyto').value;
     var amount = document.getElementById('amount').value;

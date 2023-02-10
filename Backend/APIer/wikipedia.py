@@ -11,7 +11,7 @@ def get_cities_in_country(country, nbrOfCities):
     url = "http://www.wikidata.org/w/api.php?action=query&list=list1&sites=enwiki&titles=Lists_of_cities_by_country&languages=en&format=json"
     response = requests.request("GET", url)
     response_data = response.json()
-    print(response_data)
+    print(response.text)
 
 
 
