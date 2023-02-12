@@ -11,14 +11,21 @@ def get_cities_in_country(country, nbrOfCities):
     url = "http://www.wikidata.org/w/api.php?action=query&list=list1&sites=enwiki&titles=Lists_of_cities_by_country&languages=en&format=json"
     response = requests.request("GET", url)
     response_data = response.json()
-    print(response.text)
+    #print(response.text)
 
 
 
 # Hjälp metod för övriga metoder.
 def get_wikidataID(cityName):
+    
+    if " " in cityName:
+        cityName = cityName.replace(" ", "%20")
 
+    if cityName == "New%20York":
+        cityName += "%20City"    
+  
     url = "http://www.wikidata.org/w/api.php?action=wbgetentities&sites=enwiki&titles=" + cityName + "&props=descriptions&languages=en&format=json"
+    print("URL: " + url)
     
     # will return "Q25796287" as the value of the "wikibase_item" key.
 

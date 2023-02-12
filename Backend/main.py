@@ -24,9 +24,6 @@ from APIer.currencyConverter import get_rate
 app = Flask(__name__)
 CORS(app)
 
-
-
-
 # ****************************
 # Route /cityname
 # ****************************
@@ -39,8 +36,8 @@ def searchCity(cityname):
         print("Cityname: " + cityname)
 
         # Konstruera JSON fil enligt API Dokumentationen.
-        cityInfo = get_cityDetails(cityname.capitalize())
-        cityWeather = get_cityWeather(cityname.capitalize())
+        cityInfo = get_cityDetails(cityname.title())
+        cityWeather = get_cityWeather(cityname.title())
         time.sleep(1) # Pausa 1 s pga. api begräsningar.
         countryInfo = get_countryDetails(cityInfo['data']['countryCode'])
         currencyto = countryInfo['data']['currencyCodes']
